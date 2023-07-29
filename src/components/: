@@ -8,8 +8,8 @@ const VideoPlayer = () => {
 
   const [videoUrl, setVideoUrl] = useState("Video URL ")
   const [videoThumbnailUrl, setVideoThumbnailUrl] = useState("videoThumbnailUrl ")
-  const [playerWidth,setPlayerWidth] = useState("700px")
-  // const [playerHeight,setPlayeHeight] = useState("1000px")
+  const [playerWidth,setPlayerWidth] = useState("1000px")
+  const [playerHeight,setPlayeHeight] = useState("1000px")
 
   const fetchData = async () => {
 
@@ -50,7 +50,7 @@ const VideoPlayer = () => {
   return (
     <div style={{display:"flex", "flex-direction":"column"}} >
 
-      <video controls src={videoUrl}  poster={videoThumbnailUrl} width={playerWidth} >
+      <video controls src={videoUrl}  poster={videoThumbnailUrl}>
         <p>
           Your browser doesn't support HTML video. Here is a
           <a href={videoUrl}>link to the video</a> instead.

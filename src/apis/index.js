@@ -6,25 +6,36 @@ const invidious = axios.create({
 })
 
 
-const getSearchResults = (search_term) => {
-  const promise = fetch('https://invidious.snopyta.org/api/v1/search?q=' + search_term)
+// const getSearchResults = (search_term) => {
+//   const promise = fetch('https://invidious.snopyta.org/api/v1/search?q=' + search_term)
 
-  let videoUrl = ""
-  promise.then((response) => {
-    console.log(response.status)
-    console.log(response.ok)
-    console.log(response.headers)
+//   let videoUrl = ""
+//   promise.then((response) => {
+//     console.log(response.status)
+//     console.log(response.ok)
+//     console.log(response.headers)
 
-    return response.json()
-  }).then((response_json) => {
-    console.log(response_json)
-    videoUrl = ""
+//     return response.json()
+//   }).then((response_json) => {
+//     console.log(response_json)
+//     videoUrl = ""
 
-  })
+//   })
 
+
+// }
+
+
+const getSearchResults = async (search_term)=>{
+  const response = await invidious.get("https://invidious.snopyta.org/api/v1/search?q="+search_term,{})
+
+  const data = response.data
+  console.log("Search results as obtained by the API : ")
+  console.log(data)
+  const result  = ""
+  return data
 
 }
-
 
 const getVideoInfo = async (video_id) => {
 
@@ -54,7 +65,7 @@ const getVideoInfo = async (video_id) => {
 
     if (element.type.substring(0, 9) === "video/mp4") {
       videoUrl = element.url
-      console.log("Video Url as fetched by the API : " + videoUrl)
+      // console.log("Video Url as fetched by the API : " + videoUrl)
       break
 
 
@@ -76,7 +87,7 @@ const getVideoInfo = async (video_id) => {
   const invidious_api = {}
 
   invidious_api.getVideoInfo = getVideoInfo
-
+  invidious_api.getSearchResults = getSearchResults
 
 
 

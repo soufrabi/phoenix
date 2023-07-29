@@ -1,6 +1,12 @@
 import axios from "axios"
 
-const invidious_instance = "invidious.snopyta.org"
+const getInvidiousInstances = ()=> {
+  // api.invidious.io
+
+}
+
+const invidious_instances = ["invidious.snopyta.org","yt.floss.media","yewtu.be",]
+const invidious_instance = invidious_instances[1]
 
 const invidious = axios.create({
   baseURL: "https://"+invidious_instance
@@ -43,7 +49,10 @@ const getVideoInfo = async (video_id) => {
   let videoUrl = ""
   let videoThumbnailUrl = ""
 
-  const response = await invidious.get("api/v1/videos/" + video_id, {})
+  let request_string = "api/v1/videos/"+video_id
+  console.log("Request string")
+  console.log(request_string)
+  const response = await invidious.get(request_string, {})
   const data = response.data
   const formatStreams = data.formatStreams
   // console.log(formatStreams)

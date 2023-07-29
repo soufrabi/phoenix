@@ -70,12 +70,12 @@ const SideBarLeft = () => {
             <span className="tooltip">Home </span>
           </li>
 
-          <li>
+          {/* <li>
             <i className="bx bxs-grid-alt" />
             <span className="nav-item" style={{display:navItemDisplay}}>Dashboard</span>
 
             <span className="tooltip">Dashboard </span>
-          </li>
+          </li> */}
 
           <li onClick={()=>{gotoWatchPage()}}>
             <i className="fa fa-youtube-play" />
@@ -106,13 +106,13 @@ const SideBarLeft = () => {
             <span className="tooltip">Settings</span>
           </li>
 
-          <li onClick={()=>{handleLogout()}} >
+          {/* <li onClick={()=>{handleLogout()}} >
 
             <i  className="bx bx-log-out" />
             <span className="nav-item" style={{display:navItemDisplay}} >Logout</span>
 
             <span className="tooltip">Logout</span>
-          </li>
+          </li> */}
 
         </ul>
 

@@ -5,7 +5,6 @@ import { watchSuggestionsActions } from "../store/watch-suggestions";
 import { searchResultsActions } from "../store/search-results"
 import { useSelector, useDispatch } from "react-redux";
 import { pageActions } from "../store/page";
-import "./style.css"
 
 
 const SearchBar = (props) => {
@@ -45,40 +44,30 @@ const SearchBar = (props) => {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <form onSubmit={handleSearch}
+        style={{
+          display: "flex",
+          flexDirection: "row",
 
-        <div id="phoenix-name">
-          Phoenix
-        </div>
-
-        <form onSubmit={handleSearch}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-
-          }}
+        }}
+      >
+        <div
+          id="search-bar-search-icon"
+          onClick={handleSearch}
         >
-          <div
-            id="search-bar-search-icon"
-            onClick={handleSearch}
-          >
-            <i className="fa fa-search"> </i>
-          </div>
-
-          <input 
-            id="search-bar-input"
-            type="text"
-            value={searchTerm}
-            onChange={handleInputChange}
-            placeholder="Search ..."
-          >
-          </input>
-
-        </form>
-
-        <div>
+          <i className="fa fa-search"> </i>
         </div>
-      </div>
+
+        <input
+          id="search-bar-input"
+          type="text"
+          value={searchTerm}
+          onChange={handleInputChange}
+          placeholder="Search ..."
+        >
+        </input>
+
+      </form>
     </>
   )
 

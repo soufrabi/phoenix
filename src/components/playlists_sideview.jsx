@@ -72,7 +72,7 @@ const CreatePlaylistForm = (props) => {
 
       <form onSubmit={handleFormSubmit}>
         <input type="text" value={nameOfNewPlaylist} onChange={handleInputChange} placeholder="New PLaylist" size="30"
-          style={{}} />
+          style={{ background: "#3B3B4F", color: "white", outline: "none", paddingLeft: "5px" }  } />
 
       </form>
 
@@ -169,7 +169,7 @@ const PlaylistsSideview = (props) => {
   return (
 
     <>
-      <div>
+      <div style={{}}>
         <div style={{display:"grid", gridTemplateColumns:"1fr 1fr"}}>
           <button type="button" onClick={changeModeToAllPlaylists}>All Playlists</button>
           <button type="button" onClick={changeModeToCurrentPlaylist}>Current Playlist</button>

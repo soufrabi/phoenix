@@ -15,7 +15,7 @@ const WatchPage = () => {
 
   return (
 
-    <div style={{ position: "absolute", top: "40px", border: "2px solid black" }}>
+    <div style={{ border: "2px solid black" }}>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div style={{ border: "2px groove black" }}>
           <VideoPlayer />
@@ -36,7 +36,7 @@ const FrontEnd = () => {
   console.log(page)
 
   return (
-    <div style={{}}>
+    <div style={{marginTop:styles.topBar.height, paddingTop:"10px"}}>
       <TopBar />
       { page.type === "WATCH_PAGE" && <WatchPage /> }
       { page.type === "SEARCH_EXPLORE_PAGE" && <SearchExplore /> }

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const searchResultsExploreSlice = createSlice({
-  name: 'searchResultsExplore',
+const searchResultsSlice = createSlice({
+  name: 'searchResults',
   initialState : {
     searchResults : []
   },
@@ -20,6 +20,6 @@ const searchResultsExploreSlice = createSlice({
 })
 
 
-export const searchResultsExploreActions = searchResultsExploreSlice.actions
+export const searchResultsActions = searchResultsSlice.actions
 
-export default searchResultsExploreSlice
+export default searchResultsSlice

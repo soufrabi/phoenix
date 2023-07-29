@@ -26,6 +26,12 @@ const SearchItem = (props) => {
       console.log("Its a channel")
     }
   }
+  
+  const handleContexMenu = (e)=> {
+    // for right clicking on image
+    e.preventDefault()
+
+  }
 
   useEffect(() => {
 
@@ -51,8 +57,8 @@ const SearchItem = (props) => {
 
   return (
     <>
-      <div style={{ border: "2px solid black", padding: "5px" }}>
-        <img onClick={handleImageClick} width={imgWidth + "px"} src={thumbnailUrl} alt="" />
+      <div style={{ background:"#363040", color:"white" ,border: "2px solid black", borderRadius: "25px" ,padding: "5px" }}>
+        <img onClick={handleImageClick} onContextMenu={handleContexMenu} width={imgWidth + "px"} src={thumbnailUrl} alt="" />
         <p>
           {props.data.title} <br />
           {props.data.videoId} <br />
@@ -68,12 +74,13 @@ const SearchItem = (props) => {
 
 const SearchExplore = (props) => {
 
-  const searchResults = useSelector((state) => state.watchSuggestions.videoList)
+  // const searchResults = useSelector((state) => state.watchSuggestions.videoList)
+  const searchResults = useSelector((state) => state.searchResults.searchResults)
   // will change this to searchResultsExplore 
 
   return (
     <>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
         {
           searchResults.map((item) => {
 

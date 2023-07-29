@@ -24,13 +24,13 @@ const topBar = {
   paddingLeft: "10px",
   paddingRight: "10px",
   paddingTop: "5px",
-  zIndex: "999"
+  zIndex: "999",
 }
 
 const styles = {
   frontEnd: frontEnd,
   topBar: topBar,
-  watchSuggestionSideBar: watchSuggestionSideBar
+  watchSuggestionSideBar: watchSuggestionSideBar,
 }
 
 

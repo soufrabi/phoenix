@@ -10,9 +10,11 @@ import pageSlice from "./page.js";
 import playlistsSlice from "./playlists.js";
 import historySlice from "./history.js"
 import debugSlice from "./debug.js";
+import apiSlice from "./api.js"
 
 
 const combinedReducers = combineReducers({
+  api: apiSlice.reducer,
   auth: authSlice.reducer,
   cart: cartSlice.reducer,
   page: pageSlice.reducer,

@@ -133,6 +133,8 @@ const getVideoInfo = async (video_id) => {
 
   invidious_api.getVideoInfo = getVideoInfo
   invidious_api.getSearchResults = getSearchResults
+  invidious_api.invidious_instances = invidious_instances
+  invidious_api.invidious_instance = invidious_instance
 
 
 

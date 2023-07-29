@@ -17,19 +17,18 @@ const frontEnd = {
 const topBar = {
   position: "fixed",
   top: "0px",
-  height: "244px"
-}
-
-const mainContainer = {
-  "marigin-top":"100px",
-  display:"flex",
-  "flex-direction":"row"
+  left: "0px",
+  height: "30px",
+  backgroundColor:"black",
+  width: "100vw",
+  paddingLeft: "10px",
+  paddingRight: "10px",
+  paddingTop: "5px"
 }
 
 const styles = {
   frontEnd: frontEnd,
   topBar: topBar,
-  mainContainer: mainContainer,
   watchSuggestionSideBar: watchSuggestionSideBar
 }
 

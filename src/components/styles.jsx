@@ -23,7 +23,8 @@ const topBar = {
   width: "100vw",
   paddingLeft: "10px",
   paddingRight: "10px",
-  paddingTop: "5px"
+  paddingTop: "5px",
+  zIndex: "999"
 }
 
 const styles = {

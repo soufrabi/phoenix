@@ -9,7 +9,9 @@ const videoPlayerInfoSlice = createSlice({
     videoUrl: "",
     videoThumbnailUrl: "",
     playerWidthVal: savedConfig.playerWidthVal,
-    playerWidth: savedConfig.playerWidth
+    playerWidth: savedConfig.playerWidth,
+    autoplay: savedConfig.autoplay,
+    playerControls: savedConfig.playerControls
   },
   reducers: {
     updateVideoId(state, action) {
@@ -49,14 +51,16 @@ const videoPlayerInfoSlice = createSlice({
 
     },
 
-    loadFromLocalStorage(state) {
+    toggleAutoplay(state) {
+      state.autoplay = !state.autoplay
+      localStorage.setItem('autoplay', String(state.autoplay))
 
+    },
+    togglePlayerControls(state) {
+      state.playerControls = !state.playerControls
+      localStorage.setItem('playerControls', String(state.playerControls))
 
-      const playerWidthVal = localStorage.getItem("playerWidthVal")
-      if (playerWidthVal != null) {
-        state.playerWidthVal = parseInt(playerWidthVal)
-      }
-    }
+    },
   }
 })
 

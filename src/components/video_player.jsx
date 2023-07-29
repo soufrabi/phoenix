@@ -58,6 +58,13 @@ const VideoPlayer = () => {
     dispatch(videoPlayerInfoActions.saveAsInitialVideo())
   }
 
+  const toggleAutoplay = () => {
+    dispatch(videoPlayerInfoActions.toggleAutoplay())
+  }
+  const togglePlayerControls = () => {
+    dispatch(videoPlayerInfoActions.togglePlayerControls())
+  }
+
   const reloadButtonClicked = () => {
     console.log("Reload URL button clicked")
 
@@ -70,13 +77,13 @@ const VideoPlayer = () => {
 
     fetchData()
 
-  }, [videoPlayerInfo.videoId, videoPlayerInfo.playerWidth])
+  }, [videoPlayerInfo.videoId])
 
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }} >
 
-      <video controls autoPlay src={videoPlayerInfo.videoUrl} poster={videoPlayerInfo.videoThumbnailUrl} width={videoPlayerInfo.playerWidth} >
+      <video controls={videoPlayerInfo.playerControls} autoPlay={videoPlayerInfo.autoplay} src={videoPlayerInfo.videoUrl} poster={videoPlayerInfo.videoThumbnailUrl} width={videoPlayerInfo.playerWidth} >
         <p>
           Your browser doesn't support HTML video. Here is a
           <a href={videoPlayerInfo.videoUrl}>link to the video</a> instead.
@@ -89,6 +96,8 @@ const VideoPlayer = () => {
         <button type="button" onClick={saveAsInitialVideo}>Save as Initial Video</button>
         <button type="button" onClick={increasePlayerSize}>Increase Player Size</button>
         <button type="button" onClick={decreasePlayerSize}>Decrease Player Size</button>
+        <button type="button" onClick={toggleAutoplay}>Toggle Autoplay</button>
+        <button type="button" onClick={togglePlayerControls}>Toggle Controls</button>
       </div>
 
 

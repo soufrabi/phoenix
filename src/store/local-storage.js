@@ -24,6 +24,21 @@ const loadConfig = () => {
     savedConfig.initialVideoId = "bUaHbs09sOo"
   }
 
+  const autoplay = localStorage.getItem("autoplay")
+  if (autoplay != null) {
+    savedConfig.autoplay = Boolean(autoplay)
+    console.log(savedConfig.autoplay)
+  } else {
+    savedConfig.autoplay = true
+  }
+
+  const playerControls = localStorage.getItem("playerControls")
+  if (playerControls != null) {
+    savedConfig.playerControls = Boolean(playerControls)
+    console.log(savedConfig.playerControls)
+  } else {
+    savedConfig.playerControls = false
+  }
 
   return savedConfig
 

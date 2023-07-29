@@ -1,31 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const loadFromLocalStorage = (key) => {
-  const retrieved = JSON.parse(localStorage.getItem(key));
-  if (retrieved != null) {
-    const data = JSON.parse(localStorage.getItem(key));
-    console.log(data);
-    return data
-  } else {
-    const data = {size:0,list:[]}
-    return data
-  }
-
-}
-
-
-const saveInLocalStorage = (key, data) => {
-
-  localStorage.setItem(key, JSON.stringify(data));
-
-
-}
-
+import {saveInLocalStorage, loadFromLocalStorage} from "./local_storage"
 
 
 const playlistsSlice = createSlice({
   name: 'playlists',
-  initialState: loadFromLocalStorage("playlists"),
+  initialState: loadFromLocalStorage("playlists",{
+    size:0,
+    list:[]
+  }
+  ),
   reducers: {
 
     deleteAllPlaylists(state, action) {

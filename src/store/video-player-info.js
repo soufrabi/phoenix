@@ -1,32 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const loadFromLocalStorage = (key) => {
-  const retrieved = JSON.parse(localStorage.getItem(key));
-  if (retrieved != null) {
-    const data = JSON.parse(localStorage.getItem(key));
-    console.log(data);
-    return data
-  } else {
-    const data = {
-      playerWidthVal: 700,
-      playerWidth: "700px",
-      autoplay: false,
-      playerControls: true,
-      muted: false,
-      loop: true,
-    }
-
-    return data
-  }
-
-}
-
-
-const saveInLocalStorage = (key, data) => {
-
-  localStorage.setItem(key, JSON.stringify(data));
-
-}
+import { saveInLocalStorage, loadFromLocalStorage } from "./local_storage";
 
 
 const videoPlayerInfoSlice = createSlice({
@@ -36,7 +10,15 @@ const videoPlayerInfoSlice = createSlice({
     videoId: "bUaHbs09sOo",
     videoUrl: "",
     videoThumbnailUrl: "",
-    preferences: loadFromLocalStorage("playerPreferences")
+    preferences: loadFromLocalStorage("playerPreferences", {
+      playerWidthVal: 700,
+      playerWidth: "700px",
+      autoplay: false,
+      playerControls: true,
+      muted: false,
+      loop: true,
+    }
+    )
   },
   reducers: {
     updateVideoId(state, action) {

@@ -1,31 +1,14 @@
 
 import { createSlice } from "@reduxjs/toolkit";
-
-
-const loadFromLocalStorage = ()=>{
-  const retrieved = JSON.parse(localStorage.getItem("history"));
-  if(retrieved != null ){
-    const history = JSON.parse(localStorage.getItem("history"));
-    console.log(history);
-    return history
-  }else {
-    const history = {size:0, list : []}
-    return history
-  }
-
-}
-
-
-const saveInLocalStorage = (history)=> {
-
-  localStorage.setItem("history", JSON.stringify(history));
-
-
-}
+import {saveInLocalStorage, loadFromLocalStorage} from "./local_storage"
 
 const historySlice = createSlice({
   name: 'history',
-  initialState : loadFromLocalStorage(),
+  initialState : loadFromLocalStorage("history",{
+    size:0,
+    list: []
+  }
+  ),
   reducers: {
     add(state,action){
       const newItem = action.payload
@@ -42,8 +25,7 @@ const historySlice = createSlice({
         })
       }
 
-
-      saveInLocalStorage(state)
+      saveInLocalStorage("history",state)
     }
       
   }

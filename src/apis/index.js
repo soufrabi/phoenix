@@ -50,11 +50,19 @@ const getVideoInfo = async (video_id) => {
   let videoUrl = ""
   let videoThumbnailUrl = ""
 
-  let request_string = "api/v1/videos/"+video_id
+  let videoStreams = []
+  let audioStreams = []
+  let thumbnailUrls = []
+
+  // let request_string = "api/v1/videos/"+video_id
+  let request_string = "https://"+invidious_instance+"/api/v1/videos/"+video_id
   console.log("Request string")
   console.log(request_string)
   const response = await invidious.get(request_string, {})
+  console.log("Video Player Info API call")
+
   const data = response.data
+  console.log(data)
   const formatStreams = data.formatStreams
   // console.log(formatStreams)
 

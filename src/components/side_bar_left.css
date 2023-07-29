@@ -59,7 +59,7 @@
 @media (max-width : 576px){
 
     .side-bar-left .top i {
-        font-size: 200%;
+        font-size: 300%;
     }
     .side-bar-left i {
         font-size: 150%;
@@ -72,10 +72,10 @@
 
 @media (min-width:576px) and (max-width : 1000px){
     .side-bar-left .top i {
-        font-size: 200%;
+        font-size: 250%;
     }
     .side-bar-left i {
-        font-size: 125%;
+        font-size: 150%;
     }
     .side-bar-left .nav-item {
         font-size: 125%;

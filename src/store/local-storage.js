@@ -37,7 +37,7 @@ const loadConfig = () => {
     savedConfig.playerControls = Boolean(playerControls)
     console.log(savedConfig.playerControls)
   } else {
-    savedConfig.playerControls = false
+    savedConfig.playerControls = true
   }
 
   return savedConfig

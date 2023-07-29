@@ -1,15 +1,26 @@
 import axios from "axios"
 
-const getInvidiousInstances = ()=> {
-  // api.invidious.io
+const invidious_api = {}
 
+
+invidious_api.invidious_instances = ["yewtu.be","vid.puffyan.us","yt.artemislena.eu","invidious.projectsegfau.lt","y.com.sb","invidious.tiekoetter.com","invidious.slipfox.xyz","invidious.privacydev.net","vid.priv.au","iv.melmac.space","iv.ggtyler.dev","invidious.lunar.icu","invidious.0011.lt","inv.zzls.xyz","yt.floss.media","inv.tux.pizza","not-ytp.blocus.ch","invidious.protokolla.fi","onion.tube","inv.in.projectsegfau.lt","inv.citw.lgbt","inv.makerlab.tech","yt.oelrichsgarcia.de"]
+invidious_api.invidious_instance = invidious_api.invidious_instances[2]
+
+invidious_api.getInvidiousInstances = ()=>{
+  return invidious_api.invidious_instances
 }
 
-const invidious_instances = ["invidious.snopyta.org","yewtu.be","vid.puffyan.us","yt.artemislena.eu","invidious.projectsegfau.lt","y.com.sb","invidious.tiekoetter.com","invidious.slipfox.xyz","invidious.privacydev.net","vid.priv.au","iv.melmac.space","iv.ggtyler.dev","invidious.lunar.icu","invidious.0011.lt","inv.zzls.xyz","yt.floss.media","inv.tux.pizza","not-ytp.blocus.ch","invidious.protokolla.fi","onion.tube","inv.in.projectsegfau.lt","inv.citw.lgbt","inv.makerlab.tech","yt.oelrichsgarcia.de"]
-let invidious_instance = invidious_instances[3]
+invidious_api.getInvidiousInstance = ()=>{
+  return invidious_api.invidious_instance
+}
+
+
+invidious_api.setInvidiousInstance = (provided_instance)=>{
+  invidious_api.invidious_instance = provided_instance
+}
 
 const invidious = axios.create({
-  baseURL: "https://"+invidious_instance
+  baseURL: "https://"+invidious_api.getInvidiousInstance()
 })
 
 
@@ -34,8 +45,8 @@ const invidious = axios.create({
 // }
 
 
-const getSearchResults = async (search_term)=>{
-  const response = await invidious.get("https://"+invidious_instance+"/api/v1/search?q="+search_term,{})
+invidious_api.getSearchResults = async (search_term)=>{
+  const response = await invidious.get("https://"+invidious_api.getInvidiousInstance()+"/api/v1/search?q="+search_term,{})
 
   const data = response.data
   console.log("Search results as obtained by the API : ")
@@ -45,7 +56,7 @@ const getSearchResults = async (search_term)=>{
 
 }
 
-const getVideoInfo = async (video_id) => {
+invidious_api.getVideoInfo = async (video_id) => {
 
   let videoUrl = ""
   let videoThumbnailUrl = ""
@@ -54,7 +65,7 @@ const getVideoInfo = async (video_id) => {
   let audioStreams = []
 
   // let request_string = "api/v1/videos/"+video_id
-  let request_string = "https://"+invidious_instance+"/api/v1/videos/"+video_id
+  let request_string = "https://"+invidious_api.getInvidiousInstance()+"/api/v1/videos/"+video_id
   console.log("Request string")
   console.log(request_string)
   const response = await invidious.get(request_string, {})
@@ -129,12 +140,12 @@ const getVideoInfo = async (video_id) => {
 }
 
 
-  const invidious_api = {}
+  // const invidious_api = {}
 
-  invidious_api.getVideoInfo = getVideoInfo
-  invidious_api.getSearchResults = getSearchResults
-  invidious_api.invidious_instances = invidious_instances
-  invidious_api.invidious_instance = invidious_instance
+  // invidious_api.getVideoInfo = getVideoInfo
+  // invidious_api.getSearchResults = getSearchResults
+  // invidious_api.invidious_instances = invidious_instances
+  // invidious_api.invidious_instance = invidious_instance
 
 
 

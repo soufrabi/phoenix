@@ -8,7 +8,8 @@ const SideBarLeft = () => {
 
   const dispatch = useDispatch()
   const [width,setWidth] = useState('50px')
-  const [navItemOpacity,setNavItemOpacity] = useState('0')
+  // const [navItemOpacity,setNavItemOpacity] = useState('1')
+  const [navItemDisplay,setNavItemDisplay] = useState("none")
 
   const handleToggleButton = () => {
 
@@ -16,10 +17,12 @@ const SideBarLeft = () => {
 
     if (width === "50px"){
       setWidth("170px")
-      setNavItemOpacity('1')
+      // setNavItemOpacity('1')
+      setNavItemDisplay('block')
     } else if( width === "170px"){
       setWidth("50px")
-      setNavItemOpacity('0')
+      // setNavItemOpacity('1')
+      setNavItemDisplay('none')
     }
 
 
@@ -69,14 +72,14 @@ const SideBarLeft = () => {
           
           <li onClick={()=>{gotoHomepage()}} >
             <i className="fa fa-home" />
-            <span className="nav-item" style={{opacity:navItemOpacity}}>Home</span>
+            <span className="nav-item" style={{display:navItemDisplay}}>Home</span>
 
             <span className="tooltip">Home </span>
           </li>
 
           <li>
             <i className="bx bxs-grid-alt" />
-            <span className="nav-item" style={{opacity:navItemOpacity}}>Dashboard</span>
+            <span className="nav-item" style={{display:navItemDisplay}}>Dashboard</span>
 
             <span className="tooltip">Dashboard </span>
           </li>
@@ -84,21 +87,21 @@ const SideBarLeft = () => {
           <li>
 
             <i className="bx bxs-playlist" />
-            <span className="nav-item" style={{opacity:navItemOpacity}}>Playlists</span>
+            <span className="nav-item" style={{display:navItemDisplay}}>Playlists</span>
 
             <span className="tooltip">Playlists </span>
           </li>
 
           <li>
             <i className="bx bx-history" />
-            <span className="nav-item" style={{opacity:navItemOpacity}} >History</span>
+            <span className="nav-item" style={{display:navItemDisplay}} >History</span>
 
             <span className="tooltip">History</span>
           </li>
 
           <li onClick={()=>{gotoSettings()}}>
             <i className="bx bxs-cog" />
-            <span className="nav-item" style={{opacity:navItemOpacity}}>Settings</span>
+            <span className="nav-item" style={{display:navItemDisplay}}>Settings</span>
          
             <span className="tooltip">Settings</span>
           </li>
@@ -106,7 +109,7 @@ const SideBarLeft = () => {
           <li onClick={()=>{handleLogout()}} >
 
             <i  className="bx bx-log-out" />
-            <span className="nav-item" style={{opacity:navItemOpacity}} >Logout</span>
+            <span className="nav-item" style={{display:navItemDisplay}} >Logout</span>
 
             <span className="tooltip">Logout</span>
           </li>

@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 const VideoPlayer = () => {
 
   const videoPlayerInfo = useSelector((state) => state.videoPlayerInfo)
+  const playerWidth = useSelector((state)=> state.videoPlayerInfo.preferences.playerWidth)
   const dispatch = useDispatch()
 
 
@@ -98,11 +99,17 @@ const VideoPlayer = () => {
       <video 
         src={videoPlayerInfo.videoUrl} 
         poster={videoPlayerInfo.videoThumbnailUrl}
-        width={videoPlayerInfo.preferences.playerWidth} 
+        // width={videoPlayerInfo.preferences.playerWidth} 
         controls={videoPlayerInfo.preferences.playerControls}
         autoPlay={videoPlayerInfo.preferences.autoplay} 
         muted={videoPlayerInfo.preferences.muted} 
         loop={videoPlayerInfo.preferences.loop}
+
+        style={{
+          width: {playerWidth},
+          maxWidth: "90vw",
+          maxHeight: "80vh",
+        }}
       >
         <p>
           Your browser doesn't support HTML video. Here is a

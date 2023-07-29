@@ -11,8 +11,8 @@ const videoPlayerInfoSlice = createSlice({
     videoUrl: "",
     videoThumbnailUrl: "",
     preferences: loadFromLocalStorage("playerPreferences", {
-      playerWidthVal: 700,
-      playerWidth: "700px",
+      playerWidthVal: 90,
+      playerWidth: "90vw",
       autoplay: false,
       playerControls: true,
       muted: false,
@@ -38,16 +38,16 @@ const videoPlayerInfoSlice = createSlice({
 
     increasePlayerWidth(state) {
       if (state.preferences.playerWidthVal < 2000) {
-        state.preferences.playerWidthVal += 100
-        state.preferences.playerWidth = String(state.preferences.playerWidthVal) + "px"
+        state.preferences.playerWidthVal += 5
+        state.preferences.playerWidth = String(state.preferences.playerWidthVal) + "vw"
         saveInLocalStorage("playerPreferences", state.preferences)
       }
     },
 
     decreasePlayerWidth(state) {
-      if (state.preferences.playerWidthVal > 200) {
-        state.preferences.playerWidthVal -= 100
-        state.preferences.playerWidth = String(state.preferences.playerWidthVal) + "px"
+      if (state.preferences.playerWidthVal > 20) {
+        state.preferences.playerWidthVal -= 5
+        state.preferences.playerWidth = String(state.preferences.playerWidthVal) + "vw"
         saveInLocalStorage("playerPreferences", state.preferences)
       }
 

@@ -12,6 +12,7 @@ import {PlaylistsSideview} from "./playlists_sideview.jsx"
 import { styles } from "./styles";
 import "./style.css"
 
+
 const WatchPage = () => {
 
   return (
@@ -37,7 +38,7 @@ const FrontEnd = () => {
   console.log(page)
 
   return (
-    <div style={{marginTop:styles.topBar.height, paddingTop:"10px"}}>
+    <div style={{marginTop:styles.topBar.height, paddingTop:"1em"}}>
       <TopBar />
       { page.type === "WATCH_PAGE" && <WatchPage /> }
       { page.type === "SEARCH_EXPLORE_PAGE" && <SearchExplore /> }

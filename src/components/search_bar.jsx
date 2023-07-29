@@ -59,14 +59,8 @@ const SearchBar = (props) => {
           }}
         >
           <div
+            id="search-bar-search-icon"
             onClick={handleSearch}
-            style={{
-              position: "relative",
-              top: "0.9em",
-              left: "1.65em",
-              fontSize: "1.3em",
-              color: "#777777",
-            }}
           >
             <i className="fa fa-search"> </i>
           </div>

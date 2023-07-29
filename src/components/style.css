@@ -8,22 +8,22 @@
   background: #3D3846;
   width: 100vw;
   padding-left: 0.5em;
-  padding-top: 5px;
+  padding-top: 0.5em;
   z-index: 999;
 
 }
 
 #search-bar-input {
-  height: 40px;
+  height: 2em;
   background: #241F31;
   color: white;
   padding-left: 2.8em;
-  margin-top: 12px;
-  margin-bottom: 19px;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  border-top-left-radius: 1.5em;
+  border-bottom-left-radius: 1.5em;
+  border-top-right-radius: 1.5em;
+  border-bottom-right-radius: 1.5em;
   font-size: 1.3em;
   width: 20em;
 
@@ -42,6 +42,14 @@
   font-family: monospace;
   text-align: center;
   padding-left: 1.2em;
+}
+
+#search-bar-search-icon {
+  position: relative;
+  top: 1em;
+  left: 1.7em;
+  font-size: 1.3em;
+  color: #777777;
 }
 
 input::placeholder {

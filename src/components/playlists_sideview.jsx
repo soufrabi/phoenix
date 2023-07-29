@@ -72,7 +72,7 @@ const CreatePlaylistForm = (props) => {
 
       <form onSubmit={handleFormSubmit}>
         <input type="text" value={nameOfNewPlaylist} onChange={handleInputChange} placeholder="New PLaylist" size="30"
-          style={{ background: "#3B3B4F", color: "white", outline: "none", paddingLeft: "5px" }  } />
+          style={{ background: "#3B3B4F", color: "white", outline: "none", paddingLeft: "0.5em" }  } />
 
       </form>
 

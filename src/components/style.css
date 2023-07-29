@@ -60,6 +60,12 @@ a {
 
 }
 
+.explore-page {
+  display:grid ;
+  grid-gap:1em;
+  margin: 0.5em;
+}
+
 .top-bar .phoenix-name {
   color:white;
   font-size: 2em;
@@ -91,6 +97,10 @@ input::placeholder {
     grid-template-columns: 1fr;
   }
 
+  .explore-page {
+    grid-template-columns: 1fr;
+  }
+
   #search-bar-input {
     width: 14em;
   }
@@ -111,11 +121,19 @@ input::placeholder {
   #search-explore {
     grid-template-columns: 1fr 1fr;
   }
+
+  .explore-page {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 
 @media (min-width: 1000px) {
   #search-explore {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .explore-page {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }

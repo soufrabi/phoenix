@@ -30,18 +30,28 @@ const SideBarLeft = () => {
 
   const gotoSettings = ()=> {
 
-    console.log("Go to Settings button clicked")
+    console.log("Go to SETTINGS_PAGE button clicked")
     dispatch(pageActions.changePage("SETTINGS_PAGE"))
   }
 
   const gotoHomepage = ()=>{
-    console.log("Go to HOMEPAGE button clicked")
+    console.log("Go to HOME_PAGE button clicked")
     dispatch(pageActions.changePage("HOME_PAGE"))
   }
 
   const gotoWatchPage = ()=>{
     console.log("Go to WATCHPAGE button clicked")
     dispatch(pageActions.changePage("WATCH_PAGE"))
+  }
+
+  const gotoHistoryPage = ()=>{
+    console.log("Go to HISTORY_PAGE button clicked")
+    dispatch(pageActions.changePage("HISTORY_PAGE"))
+  }
+
+  const gotoPlaylistsPage = ()=>{
+    console.log("Go to PLAYLISTS_PAGE button clicked")
+    dispatch(pageActions.changePage("PLAYLISTS_PAGE"))
   }
 
   const handleLogout = ()=> {
@@ -84,7 +94,7 @@ const SideBarLeft = () => {
             <span className="tooltip">Watch </span>
           </li>
 
-          <li>
+          <li onClick={()=>{gotoPlaylistsPage()}}>
 
             <i className="bx bxs-playlist" />
             <span className="nav-item" style={{display:navItemDisplay}}>Playlists</span>
@@ -92,7 +102,7 @@ const SideBarLeft = () => {
             <span className="tooltip">Playlists </span>
           </li>
 
-          <li>
+          <li onClick={()=>{gotoHistoryPage()}}>
             <i className="bx bx-history" />
             <span className="nav-item" style={{display:navItemDisplay}} >History</span>
 

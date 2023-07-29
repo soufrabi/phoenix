@@ -66,7 +66,7 @@ const getVideoInfo = async (video_id) => {
     if (element.type.substring(0, 9) === "video/mp4") {
       videoUrl = element.url
       // console.log("Video Url as fetched by the API : " + videoUrl)
-      break
+      // break
 
 
     }

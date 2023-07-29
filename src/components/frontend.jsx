@@ -8,7 +8,7 @@ import { WatchSuggestionsSideBar } from "./watch_suggestions.jsx"
 import { SearchExplore } from "./search_explore";
 import {HomePage} from "./homepage.jsx"
 import {HistorySideview} from "./history_sideview.jsx"
-
+import {PlaylistsSideview} from "./playlists_sideview.jsx"
 import { styles } from "./styles";
 
 const WatchPage = () => {
@@ -21,7 +21,8 @@ const WatchPage = () => {
           <VideoPlayer />
         </div>
         <div style={{ border: "2px groove black" }}>
-          <WatchSuggestionsSideBar />
+          <PlaylistsSideview />
+          {/* <WatchSuggestionsSideBar /> */}
           {/* <HistorySideview /> */}
         </div>
       </div>

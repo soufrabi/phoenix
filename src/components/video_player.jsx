@@ -55,6 +55,10 @@ const VideoPlayer = () => {
   const playerWidth = useSelector((state) => state.videoPlayerInfo.preferences.playerWidth)
   const dispatch = useDispatch()
 
+  const [currentTime, setCurrentTime] = useState("0:00")
+  const [currentTimePretty, setCurrentTimePretty] = useState("0:00")
+  const [durationPretty, setDurationPretty] = useState("0:00")
+
 
   const printVideoPlayerInfo = () => {
     console.log(videoPlayerInfo)
@@ -110,6 +114,72 @@ const VideoPlayer = () => {
     dispatch(videoPlayerInfoActions.toggleLoop())
   }
 
+  const leadingZeroFormatter = new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 })
+
+  const formatDuration = (time) => {
+
+    const seconds = Math.floor(time % 60)
+    const minutes = Math.floor(time / 60) % 60
+    const hours = Math.floor(time / 3600)
+
+    if (hours === 0) {
+      return `${minutes}:${leadingZeroFormatter.format(seconds)}`
+
+    }
+    else {
+      return `${hours}:${leadingZeroFormatter.format(minutes)}:${leadingZeroFormatter.format(seconds)}`
+
+    }
+
+
+  }
+
+  const handleTimeUpdate = (e) => {
+    // console.log(e.target.currentTime)
+    const newCurrentTime = e.target.currentTime
+
+    const duration = videoRef.current.duration
+
+    if (typeof (duration) === "number" && duration >= 0) {
+      // const newCurrentTime = parseFloat(value) * duration
+      // console.log(value)
+      // console.log(duration)
+      // console.log(newCurrentTime)
+      // videoRef.current.currentTime = newCurrentTime
+      timelineSliderRef.current.value = (parseFloat(newCurrentTime) / duration)
+
+      setCurrentTime(newCurrentTime)
+
+      setCurrentTimePretty(formatDuration(newCurrentTime))
+      setDurationPretty(formatDuration(duration))
+    }
+    else {
+      console.log("Duration is not valid")
+    }
+
+
+
+
+  }
+
+  const handleTimelineChange = (e) => {
+
+    const value = e.target.value
+    const duration = videoRef.current.duration
+
+    if (typeof (duration) === "number" && duration >= 0) {
+      const newCurrentTime = parseFloat(value) * duration
+      // console.log(value)
+      // console.log(duration)
+      // console.log(newCurrentTime)
+      videoRef.current.currentTime = newCurrentTime
+    }
+    else {
+      console.log("Duration is not valid")
+    }
+
+  }
+
   const copyVideoLinkToClipboard = () => {
     const link = videoPlayerInfo.videoUrl;
     navigator.clipboard.writeText(link)
@@ -125,6 +195,7 @@ const VideoPlayer = () => {
   const videoRef = useRef(null)
   const videoContainerRef = useRef(null)
   const volumeSliderRef = useRef(null)
+  const timelineSliderRef = useRef(null)
 
   const togglePause = () => {
 
@@ -157,6 +228,11 @@ const VideoPlayer = () => {
 
   const toggleMiniPlayerMode = () => {
 
+  }
+
+  const downloadVideo = () => {
+
+    console.log(videoRef.current)
 
   }
 
@@ -170,6 +246,7 @@ const VideoPlayer = () => {
     }
     ))
 
+    timelineSliderRef.current.value = 0
 
     volumeSliderRef.current.value = videoPlayerInfo.preferences.volume
     videoRef.current.volume = videoPlayerInfo.preferences.volume
@@ -184,39 +261,59 @@ const VideoPlayer = () => {
       <div className="video-container " ref={videoContainerRef}>
         <div className="video-controls-container">
           <div className="timeline-container" >
-            <div className="timeline">
-              <img className="preview-img" />
-              <div className="thumb-indicator"></div>
-
-            </div>
+            {/* <div className="timeline"> */}
+            {/*   <img className="preview-img" /> */}
+            {/*   <div className="thumb-indicator"></div> */}
+            {/* </div> */}
+            <input className="timeline-slider" ref={timelineSliderRef}
+              type="range" min="0" max="1" step="any"
+              onChange={handleTimelineChange} />
 
           </div>
           <div className="video-controls">
-            <button className="play-pause-btn" onClick={togglePause}>
-              <svg className="play-icon" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" />
-              </svg>
-              <svg className="pause-icon" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M14,19H18V5H14M6,19H10V5H6V19Z" />
-              </svg>
-            </button>
+            <div>
+              <button className="play-pause-btn" onClick={togglePause}>
+                <svg className="play-icon" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+                </svg>
+                <svg className="pause-icon" viewBox="0 0 24 24">me` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `currenttime` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+                  video
+                  <path fill="currentColor" d="M14,19H18V5H14M6,19H10V5H6V19Z" />
+                </svg>
+              </button>
+            </div>
 
             <div className="volume-container">
               <button className="mute-btn" onClick={toggleMuted}>
                 <VolumeIcons volumeLevel={parseFloat(videoPlayerInfo.preferences.volume)} muted={videoPlayerInfo.preferences.muted} />
               </button>
-              <input className="volume-slider" ref={volumeSliderRef} type="range" min="0" max="1" step="any" onChange={volumeChanged} />
+              <input className="volume-slider" ref={volumeSliderRef}
+                type="range" min="0" max="1" step="any"
+                onChange={volumeChanged}
+              // onWheel={(e) => { e.preventDefault() }}
+              // onWheelCapture={(e) => { e.preventDefault() }}
+
+
+              />
             </div>
 
 
 
             <div className="duration-container">
-              <div className="current-time">0:00</div>
+              <div className="current-time">{currentTimePretty}</div>
               /
-              <div className="total-time"></div>
+              <div className="total-time">{durationPretty}</div>
             </div>
 
             <div className="right-buttons">
+
+              <button className="autoplay-btn" onClick={toggleAutoplay}>
+                A
+              </button>
+              <button className="loop-btn" onClick={toggleLoop}>
+                L
+              </button>
+
               <button className="captions-btn">
                 <svg viewBox="0 0 24 24">
                   <path fill="currentColor" d="M18,11H16.5V10.5H14.5V13.5H16.5V13H18V14A1,1 0 0,1 17,15H14A1,1 0 0,1 13,14V10A1,1 0 0,1 14,9H17A1,1 0 0,1 18,10M11,11H9.5V10.5H7.5V13.5H9.5V13H11V14A1,1 0 0,1 10,15H7A1,1 0 0,1 6,14V10A1,1 0 0,1 7,9H10A1,1 0 0,1 11,10M19,4H5C3.89,4 3,4.89 3,6V18A2,2 0 0,0 5,20H19A2,2 0 0,0 21,18V6C21,4.89 20.1,4 19,4Z" />
@@ -268,6 +365,8 @@ const VideoPlayer = () => {
           muted={videoPlayerInfo.preferences.muted}
           loop={videoPlayerInfo.preferences.loop}
 
+          onTimeUpdate={handleTimeUpdate}
+
           onClick={togglePause}
           onDoubleClick={toggleFullScreenMode}
         // style={{
@@ -284,14 +383,15 @@ const VideoPlayer = () => {
       </div>
       <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gridTemplateColumns: "1fr 1fr 1fr" }}>
         <button type="button" onClick={reloadButtonClicked}>Reload URL</button>
-        <button type="button" onClick={printVideoPlayerInfo}>printVideoPlayerInfo</button>
-        <button type="button" onClick={increasePlayerSize}>Increase Player Size</button>
-        <button type="button" onClick={decreasePlayerSize}>Decrease Player Size</button>
-        <button type="button" onClick={toggleAutoplay}>Toggle Autoplay</button>
-        <button type="button" onClick={togglePlayerControls}>Toggle Controls</button>
-        <button type="button" onClick={toggleMuted}>Toggle Muted</button>
-        <button type="button" onClick={toggleLoop}>Toggle Loop</button>
+        {/* <button type="button" onClick={printVideoPlayerInfo}>printVideoPlayerInfo</button> */}
+        {/* <button type="button" onClick={increasePlayerSize}>Increase Player Size</button> */}
+        {/* <button type="button" onClick={decreasePlayerSize}>Decrease Player Size</button> */}
+        {/* <button type="button" onClick={toggleAutoplay}>Toggle Autoplay</button> */}
+        {/* <button type="button" onClick={togglePlayerControls}>Toggle Controls</button> */}
+        {/* <button type="button" onClick={toggleMuted}>Toggle Muted</button> */}
+        {/* <button type="button" onClick={toggleLoop}>Toggle Loop</button> */}
         <button type="button" onClick={copyVideoLinkToClipboard}>Copy Video Link to Clipboard</button>
+        <button type="button" onClick={downloadVideo}>Download</button>
       </div>
 
 

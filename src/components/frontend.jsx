@@ -15,6 +15,7 @@ import "./homepage_style.css"
 import "./video_player.css"
 import "./side_bar_left.css"
 import { SideBarLeft } from "./side_bar_left";
+import { SettingsPage } from "./settings_page";
 
 
 
@@ -52,6 +53,7 @@ const FrontEnd = () => {
           {page.type === "WATCH_PAGE" && <WatchPage />}
           {page.type === "SEARCH_EXPLORE_PAGE" && <SearchExplore />}
           {page.type === "HOME_PAGE" && <HomePage />}
+          {page.type === "SETTINGS_PAGE" && <SettingsPage />}
         </div>
       </div>
 

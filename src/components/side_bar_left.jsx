@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector,useDispatch } from "react-redux";
 import { styles } from "./styles";
+import { pageActions } from "../store/page";
 
 const SideBarLeft = () => {
 
+  const dispatch = useDispatch()
   const [width,setWidth] = useState('50px')
   const [navItemOpacity,setNavItemOpacity] = useState('0')
 
@@ -20,6 +23,22 @@ const SideBarLeft = () => {
     }
 
 
+  }
+
+  const gotoSettings = ()=> {
+
+    console.log("Go to Settings button clicked")
+    dispatch(pageActions.changePage("SETTINGS_PAGE"))
+  }
+
+  const handleLogout = ()=> {
+
+    console.log("Logout button clicked deleting all local storage items")
+    alert("Deleting Local Storage")
+    
+    localStorage.clear()
+
+    
   }
 
 
@@ -57,16 +76,15 @@ const SideBarLeft = () => {
           </li>
 
           <li>
-
-            <i className="bx bxs-cog" />
+            <i onClick={()=>{gotoSettings()}} className="bx bxs-cog" />
             <span className="nav-item" style={{opacity:navItemOpacity}}>Settings</span>
-
+         
             <span className="tooltip">Settings</span>
           </li>
 
           <li>
 
-            <i className="bx bx-log-out" />
+            <i onClick={()=>{handleLogout()}} className="bx bx-log-out" />
             <span className="nav-item" style={{opacity:navItemOpacity}} >Logout</span>
 
             <span className="tooltip">Logout</span>

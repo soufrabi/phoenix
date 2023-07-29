@@ -62,6 +62,10 @@ const VideoPlayer = () => {
     dispatch(videoPlayerInfoActions.toggleMute())
   }
 
+  const toggleLoop = ()=>{
+    dispatch(videoPlayerInfoActions.toggleLoop())
+  }
+
   const copyVideoLinkToClipboard = () => {
     const link = videoPlayerInfo.videoUrl;
     navigator.clipboard.writeText(link)
@@ -91,9 +95,14 @@ const VideoPlayer = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }} >
 
-      <video src={videoPlayerInfo.videoUrl} poster={videoPlayerInfo.videoThumbnailUrl} width={videoPlayerInfo.preferences.playerWidth} 
-        controls={videoPlayerInfo.preferences.playerControls} autoPlay={videoPlayerInfo.preferences.autoplay} muted={videoPlayerInfo.preferences.muted}
-
+      <video 
+        src={videoPlayerInfo.videoUrl} 
+        poster={videoPlayerInfo.videoThumbnailUrl}
+        width={videoPlayerInfo.preferences.playerWidth} 
+        controls={videoPlayerInfo.preferences.playerControls}
+        autoPlay={videoPlayerInfo.preferences.autoplay} 
+        muted={videoPlayerInfo.preferences.muted} 
+        loop={videoPlayerInfo.preferences.loop}
       >
         <p>
           Your browser doesn't support HTML video. Here is a
@@ -109,6 +118,7 @@ const VideoPlayer = () => {
         <button type="button" onClick={toggleAutoplay}>Toggle Autoplay</button>
         <button type="button" onClick={togglePlayerControls}>Toggle Controls</button>
         <button type="button" onClick={toggleMuted}>Toggle Muted</button>
+        <button type="button" onClick={toggleLoop}>Toggle Loop</button>
         <button type="button" onClick={copyVideoLinkToClipboard}>Copy Video Link to Clipboard</button>
       </div>
 

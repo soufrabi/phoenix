@@ -13,6 +13,7 @@ const loadFromLocalStorage = (key) => {
       autoplay: false,
       playerControls: true,
       muted: false,
+      loop: true,
     }
 
     return data
@@ -81,6 +82,10 @@ const videoPlayerInfoSlice = createSlice({
     },
     toggleMute(state) {
       state.preferences.muted = !state.preferences.muted
+      saveInLocalStorage("playerPreferences", state.preferences)
+    },
+    toggleLoop(state) {
+      state.preferences.loop = !state.preferences.loop
       saveInLocalStorage("playerPreferences", state.preferences)
     },
   }

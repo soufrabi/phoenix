@@ -8,6 +8,7 @@ import searchResultsSlice from "./search-results.js";
 import pageSlice from "./page.js";
 import playlistsSlice from "./playlists.js";
 import historySlice from "./history.js"
+import debugSlice from "./debug.js";
 
 const store = configureStore({
   reducer: {
@@ -18,7 +19,8 @@ const store = configureStore({
     videoPlayerInfo: videoPlayerInfoSlice.reducer,
     searchResults: searchResultsSlice.reducer,
     playlists: playlistsSlice.reducer,
-    history: historySlice.reducer
+    history: historySlice.reducer,
+    debug: debugSlice.reducer,
   }
 
 })

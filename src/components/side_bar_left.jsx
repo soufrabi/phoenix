@@ -39,22 +39,15 @@ const SideBarLeft = () => {
     dispatch(pageActions.changePage("HOME_PAGE"))
   }
 
+  const gotoWatchPage = ()=>{
+    console.log("Go to WATCHPAGE button clicked")
+    dispatch(pageActions.changePage("WATCH_PAGE"))
+  }
+
   const handleLogout = ()=> {
 
     console.log("Logout button clicked")
 
-    var confirmation= confirm("Do you want to delete LocalStorage")
-
-    if (confirmation) {
-      console.log("Deleting Local Storage")
-      localStorage.clear()
-    } else {
-      console.log("Not Deleting Local Storage")
-    }
-
-
-
-    
   }
 
 
@@ -82,6 +75,13 @@ const SideBarLeft = () => {
             <span className="nav-item" style={{display:navItemDisplay}}>Dashboard</span>
 
             <span className="tooltip">Dashboard </span>
+          </li>
+
+          <li onClick={()=>{gotoWatchPage()}}>
+            <i className="fa fa-youtube-play" />
+            <span className="nav-item" style={{display:navItemDisplay}}>Watch</span>
+
+            <span className="tooltip">Watch </span>
           </li>
 
           <li>

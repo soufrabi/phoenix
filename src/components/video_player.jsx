@@ -108,6 +108,7 @@ const VideoPlayer = () => {
   const [currentTimePretty, setCurrentTimePretty] = useState("0:00")
   const [durationPretty, setDurationPretty] = useState("0:00")
 
+  const debugMode = useSelector((state)=>state.debug.preferences.debugMode)
 
   const printVideoPlayerInfo = () => {
     console.log(videoPlayerInfo)
@@ -450,19 +451,21 @@ const VideoPlayer = () => {
           </p>
         </video>
       </div>
-      <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gridTemplateColumns: "1fr 1fr 1fr" }}>
-        <button type="button" onClick={reloadButtonClicked}>Reload URL</button>
-        {/* <button type="button" onClick={printVideoPlayerInfo}>printVideoPlayerInfo</button> */}
-        {/* <button type="button" onClick={increasePlayerSize}>Increase Player Size</button> */}
-        {/* <button type="button" onClick={decreasePlayerSize}>Decrease Player Size</button> */}
-        {/* <button type="button" onClick={toggleAutoplay}>Toggle Autoplay</button> */}
-        {/* <button type="button" onClick={togglePlayerControls}>Toggle Controls</button> */}
-        {/* <button type="button" onClick={toggleMuted}>Toggle Muted</button> */}
-        {/* <button type="button" onClick={toggleLoop}>Toggle Loop</button> */}
-        <button type="button" onClick={copyVideoLinkToClipboard}>Copy Video Link to Clipboard</button>
-        <button type="button" onClick={downloadVideo}>Download</button>
-        <button type="button" onClick={increaseVideoQuality}>Increase Picture Quality</button>
-        <button type="button" onClick={decreaseVideoQuality}>Decrease Picture Quality</button>
+      <div style={{display:debugMode ? "block" : "none", }}>
+        <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gridTemplateColumns: "1fr 1fr 1fr" }}>
+          <button type="button" onClick={reloadButtonClicked}>Reload URL</button>
+          {/* <button type="button" onClick={printVideoPlayerInfo}>printVideoPlayerInfo</button> */}
+          {/* <button type="button" onClick={increasePlayerSize}>Increase Player Size</button> */}
+          {/* <button type="button" onClick={decreasePlayerSize}>Decrease Player Size</button> */}
+          {/* <button type="button" onClick={toggleAutoplay}>Toggle Autoplay</button> */}
+          {/* <button type="button" onClick={togglePlayerControls}>Toggle Controls</button> */}
+          {/* <button type="button" onClick={toggleMuted}>Toggle Muted</button> */}
+          {/* <button type="button" onClick={toggleLoop}>Toggle Loop</button> */}
+          <button type="button" onClick={copyVideoLinkToClipboard}>Copy Video Link to Clipboard</button>
+          <button type="button" onClick={downloadVideo}>Download</button>
+          <button type="button" onClick={increaseVideoQuality}>Increase Picture Quality</button>
+          <button type="button" onClick={decreaseVideoQuality}>Decrease Picture Quality</button>
+        </div>
       </div>
 
 

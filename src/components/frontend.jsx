@@ -10,11 +10,11 @@ import { HomePage } from "./homepage.jsx"
 // import { HistorySideview } from "./history_sideview.jsx"
 // import { PlaylistsSideview } from "./playlists_sideview.jsx"
 import { styles } from "./styles";
-import "./style.css"
-import "./homepage_style.css"
-import "./video_player.css"
-import "./side_bar_left.css"
-import "./settings_page.css"
+import "../styles/style.css"
+import "../styles/homepage_style.css"
+import "../styles/video_player.css"
+import "../styles/side_bar_left.css"
+import "../styles/settings_page.css"
 import { SideBarLeft } from "./side_bar_left";
 import { SettingsPage } from "./settings_page";
 import { ExplorePage } from "./explorer_page";

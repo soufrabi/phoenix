@@ -1,14 +1,15 @@
-
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+
 import { TopBar } from "./top_bar";
 import { VideoPlayer } from "./video_player";
 import { WatchSuggestionsSideBar } from "./watch_suggestions.jsx"
 import { SearchExplore } from "./search_explore";
 import {HomePage} from "./homepage.jsx"
-import { styles } from "./styles";
-import { useSelector } from "react-redux";
+import {HistorySideview} from "./history_sideview.jsx"
 
+import { styles } from "./styles";
 
 const WatchPage = () => {
 
@@ -21,6 +22,7 @@ const WatchPage = () => {
         </div>
         <div style={{ border: "2px groove black" }}>
           <WatchSuggestionsSideBar />
+          {/* <HistorySideview /> */}
         </div>
       </div>
     </div>

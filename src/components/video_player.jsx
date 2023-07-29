@@ -3,16 +3,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { invidious_api } from "./../apis/index.js"
 import { videoPlayerInfoActions } from "../store/video-player-info.js";
+import { historyActions} from "../store/history.js"
 import { useSelector, useDispatch } from "react-redux";
 
 const VideoPlayer = () => {
 
   const videoPlayerInfo = useSelector((state) => state.videoPlayerInfo)
   const dispatch = useDispatch()
-
-  // const [videoUrl, setVideoUrl] = useState("Video URL ")
-  // const [videoThumbnailUrl, setVideoThumbnailUrl] = useState("videoThumbnailUrl ")
-  // const [playerWidth,setPlayerWidth] = useState("700px")
 
 
   const printVideoPlayerInfo = () => {
@@ -81,6 +78,12 @@ const VideoPlayer = () => {
   useEffect(() => {
 
     fetchData()
+
+    dispatch(historyActions.add({
+      type: "video" ,
+      id: videoPlayerInfo.videoId
+    }
+    ))
 
   }, [videoPlayerInfo.videoId])
 

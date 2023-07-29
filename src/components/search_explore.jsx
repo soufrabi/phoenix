@@ -8,7 +8,7 @@ import { videoPlayerInfoActions } from "../store/video-player-info.js";
 const SearchItem = (props) => {
 
   const dispatch = useDispatch()
-  const [imgWidth, setImageWidth] = useState(300)
+  // const [imgWidth, setImageWidth] = useState(300)
   const [thumbnailUrl, setThumbnailUrl] = useState("")
 
 
@@ -57,11 +57,21 @@ const SearchItem = (props) => {
 
   return (
     <>
-      <div style={{ background:"#363040", color:"white" ,border: "2px solid black", borderRadius: "25px" ,padding: "5px" }}>
-        <img onClick={handleImageClick} onContextMenu={handleContexMenu} width={imgWidth + "px"} src={thumbnailUrl} alt="" />
+      <div style={{ 
+        background:"#363040", color:"white" ,
+        border: "2px solid black", borderRadius: "25px",
+        padding: "5px", margin:"10px",
+        display:"flex", 
+        flexDirection:"column",
+        justifyContent:"center",
+        alignItems:"center"
+
+        }}>
+
+        <img onClick={handleImageClick} onContextMenu={handleContexMenu} width="100%" src={thumbnailUrl} alt="" />
         <p>
           {props.data.title} <br />
-          {props.data.videoId} <br />
+          {/* {props.data.videoId} <br /> */}
           {props.data.author} <br />
           {props.data.type}
         </p>

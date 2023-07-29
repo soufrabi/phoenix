@@ -5,7 +5,7 @@ const videoPlayerInfoSlice = createSlice({
 
   name: 'videoPlayerInfo',
   initialState: {
-    videoId:"AIYpdjQVidc",
+    videoId:"bUaHbs09sOo",
     videoUrl: "",
     videoThumbnailUrl: "",
     playerWidthVal: 700,
@@ -31,6 +31,7 @@ const videoPlayerInfoSlice = createSlice({
       if (state.playerWidthVal < 2000) {
         state.playerWidthVal += 100
         state.playerWidth = String(state.playerWidthVal) + "px"
+        localStorage.setItem('playerWidthVal',state.playerWidthVal)
       }
     },
 
@@ -38,8 +39,19 @@ const videoPlayerInfoSlice = createSlice({
       if (state.playerWidthVal > 200) {
         state.playerWidthVal -= 100
         state.playerWidth = String(state.playerWidthVal) + "px"
+        localStorage.setItem('playerWidthVal',state.playerWidthVal)
       }
 
+    },
+
+
+    loadFromLocalStorage(state) {
+
+
+      const playerWidthVal = localStorage.getItem("playerWidthVal")
+      if(playerWidthVal != null){
+        state.playerWidthVal = playerWidthVal
+      }
     }
   }
 })

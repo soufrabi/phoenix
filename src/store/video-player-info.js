@@ -14,8 +14,9 @@ const videoPlayerInfoSlice = createSlice({
       playerWidthVal: 90,
       playerWidth: "90vw",
       autoplay: false,
-      playerControls: true,
+      playerControls: false,
       muted: false,
+      volume: 0,
       loop: true,
     }
     )
@@ -33,6 +34,14 @@ const videoPlayerInfoSlice = createSlice({
       const newVideo = action.payload
       state.videoUrl = newVideo.videoUrl
       state.videoThumbnailUrl = newVideo.videoThumbnailUrl
+
+    },
+
+    updateVolume(state,action){
+      const newVolume = action.payload
+      state.preferences.volume = newVolume
+
+      saveInLocalStorage("playerPreferences", state.preferences)
 
     },
 

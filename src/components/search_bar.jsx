@@ -2,7 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { invidious_api } from "../apis";
 import { watchSuggestionsActions } from "../store/watch-suggestions";
+import { searchResultsExploreActions } from "../store/search-explore.js"
 import { useSelector, useDispatch } from "react-redux";
+import { pageActions } from "../store/page";
 import "./style.css"
 
 
@@ -25,6 +27,8 @@ const SearchBar = (props) => {
       console.log(invidiousSearchResults)
 
       dispatch(watchSuggestionsActions.updateSearchResults(invidiousSearchResults))
+      dispatch(searchResultsExploreActions.updateSearchResults(invidiousSearchResults))
+      dispatch(pageActions.changePage("SEARCH_EXPLORE_PAGE"))
 
     }
 
@@ -42,6 +46,11 @@ const SearchBar = (props) => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
+
+        <div style={{ color: "white", fontSize: "1.5em", fontFamily: "monospace", textAlign: "center" }}>
+          Phoenix
+        </div>
+
         <form onSubmit={handleSearch}>
           <button type="submit" style={{ background: "#3B3B4F", color: "white" }}>
             <svg className="ais-SearchBox-submitIcon" alt="Search" xmlns="https://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 40 40">
@@ -49,12 +58,10 @@ const SearchBar = (props) => {
             </svg>
           </button>
           <input type="text" onChange={handleInputChange} placeholder="Search" size="40"
-            style={{ background: "#3B3B4F", color: "white", outline:"none", paddingLeft:"5px"}} />
+            style={{ background: "#3B3B4F", color: "white", outline: "none", paddingLeft: "5px" }} />
 
         </form>
-        <div style={{ color: "white", fontSize: "1.5em", fontFamily: "monospace", textAlign: "center" }}>
-          Phoenix
-        </div>
+
         <div>
         </div>
       </div>

@@ -15,7 +15,7 @@
   </a>
  
 
-An open source YouTube client using Invidious API
+An open source YouTube front-end using Invidious API
 
 
 

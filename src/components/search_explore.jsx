@@ -57,20 +57,21 @@ const SearchItem = (props) => {
 
   return (
     <>
-      <div style={{ 
-        background:"#363040", color:"white" ,
-        border: "2px solid black", borderRadius: "25px",
-        // padding: "5px", margin:"10px",
-        overflow:"hidden",
-        display:"flex", 
-        flexDirection:"column",
-        justifyContent:"center",
-        alignItems:"center"
-
-        }}>
+      <div 
+        onClick={handleImageClick}
+        style={{ 
+          background:"#363040", color:"white" ,
+          border: "2px solid black", borderRadius: "25px",
+          // padding: "5px", margin:"10px",
+          overflow:"hidden",
+          display:"flex", 
+          flexDirection:"column",
+          justifyContent:"center",
+          alignItems:"center",
+          }}
+      >
 
         <img 
-          onClick={handleImageClick} 
           onContextMenu={handleContexMenu} 
           width="100%" 
           src={thumbnailUrl} 

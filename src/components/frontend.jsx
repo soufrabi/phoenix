@@ -6,13 +6,16 @@ import { TopBar } from "./top_bar";
 import { VideoPlayer } from "./video_player";
 import { WatchSuggestionsSideBar } from "./watch_suggestions.jsx"
 import { SearchExplore } from "./search_explore";
-import {HomePage} from "./homepage.jsx"
-import {HistorySideview} from "./history_sideview.jsx"
-import {PlaylistsSideview} from "./playlists_sideview.jsx"
+import { HomePage } from "./homepage.jsx"
+import { HistorySideview } from "./history_sideview.jsx"
+import { PlaylistsSideview } from "./playlists_sideview.jsx"
 import { styles } from "./styles";
 import "./style.css"
 import "./homepage_style.css"
 import "./video_player.css"
+import "./side_bar_left.css"
+import { SideBarLeft } from "./side_bar_left";
+
 
 
 const WatchPage = () => {
@@ -40,11 +43,17 @@ const FrontEnd = () => {
   console.log(page)
 
   return (
-    <div style={{marginTop:styles.topBar.height, paddingTop:"1em"}}>
+    <div style={{ marginTop: styles.topBar.height, paddingTop: "1em" }}>
       <TopBar />
-      { page.type === "WATCH_PAGE" && <WatchPage /> }
-      { page.type === "SEARCH_EXPLORE_PAGE" && <SearchExplore /> }
-      { page.type === "HOME_PAGE" && <HomePage />}
+
+      <div style={{ display: "flex" }}>
+        <SideBarLeft />
+        <div style={{marginLeft:"50px"}}>
+          {page.type === "WATCH_PAGE" && <WatchPage />}
+          {page.type === "SEARCH_EXPLORE_PAGE" && <SearchExplore />}
+          {page.type === "HOME_PAGE" && <HomePage />}
+        </div>
+      </div>
 
     </div>
 

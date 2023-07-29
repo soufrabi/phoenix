@@ -1,8 +1,9 @@
 import axios from "axios"
 
+const invidious_instance = "invidious.snopyta.org"
 
 const invidious = axios.create({
-  baseURL: "https://invidious.snopyta.org"
+  baseURL: "https://"+invidious_instance
 })
 
 

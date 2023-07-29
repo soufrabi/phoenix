@@ -60,7 +60,8 @@ const SearchItem = (props) => {
       <div style={{ 
         background:"#363040", color:"white" ,
         border: "2px solid black", borderRadius: "25px",
-        padding: "5px", margin:"10px",
+        // padding: "5px", margin:"10px",
+        overflow:"hidden",
         display:"flex", 
         flexDirection:"column",
         justifyContent:"center",
@@ -101,7 +102,7 @@ const SearchExplore = (props) => {
 
   return (
     <>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gridGap:"1em" , margin:"0.5em"}}>
         {
           searchResults.map((item) => {
 

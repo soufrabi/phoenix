@@ -68,7 +68,18 @@ const SearchItem = (props) => {
 
         }}>
 
-        <img onClick={handleImageClick} onContextMenu={handleContexMenu} width="100%" src={thumbnailUrl} alt="" />
+        <img 
+          onClick={handleImageClick} 
+          onContextMenu={handleContexMenu} 
+          width="100%" 
+          src={thumbnailUrl} 
+          alt=""
+
+          style={{
+            maxHeight:"332px",
+            maxWidth:"593px"
+          }}
+        />
         <p>
           {props.data.title} <br />
           {/* {props.data.videoId} <br /> */}

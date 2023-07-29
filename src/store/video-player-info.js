@@ -1,21 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { invidious_api } from "../apis";
 import { savedConfig } from "./local-storage";
 
 const videoPlayerInfoSlice = createSlice({
 
   name: 'videoPlayerInfo',
   initialState: {
-    videoId:"bUaHbs09sOo",
+    videoId: savedConfig.initialVideoId,
     videoUrl: "",
     videoThumbnailUrl: "",
     playerWidthVal: savedConfig.playerWidthVal,
     playerWidth: savedConfig.playerWidth
   },
   reducers: {
-    updateVideoId(state,action){
+    updateVideoId(state, action) {
       const newVideoId = action.payload.videoId
-      if(newVideoId.length > 5){
+      if (newVideoId.length > 5) {
         state.videoId = newVideoId
       }
 
@@ -32,7 +31,7 @@ const videoPlayerInfoSlice = createSlice({
       if (state.playerWidthVal < 2000) {
         state.playerWidthVal += 100
         state.playerWidth = String(state.playerWidthVal) + "px"
-        localStorage.setItem('playerWidthVal',state.playerWidthVal)
+        localStorage.setItem('playerWidthVal', state.playerWidthVal)
       }
     },
 
@@ -40,17 +39,21 @@ const videoPlayerInfoSlice = createSlice({
       if (state.playerWidthVal > 200) {
         state.playerWidthVal -= 100
         state.playerWidth = String(state.playerWidthVal) + "px"
-        localStorage.setItem('playerWidthVal',state.playerWidthVal)
+        localStorage.setItem('playerWidthVal', state.playerWidthVal)
       }
 
     },
 
+    saveAsInitialVideo(state) {
+      localStorage.setItem('initialVideoId', state.videoId)
+
+    },
 
     loadFromLocalStorage(state) {
 
 
       const playerWidthVal = localStorage.getItem("playerWidthVal")
-      if(playerWidthVal != null){
+      if (playerWidthVal != null) {
         state.playerWidthVal = parseInt(playerWidthVal)
       }
     }

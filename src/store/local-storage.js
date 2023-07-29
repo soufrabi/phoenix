@@ -15,6 +15,16 @@ const loadFromLocalStorage = ()=>{
 
   savedConfig.playerWidth= String(savedConfig.playerWidthVal) + "px"
 
+
+  const initialVideoId = localStorage.getItem("initialVideoId")
+  if(initialVideoId != null){
+    savedConfig.initialVideoId = initialVideoId
+    console.log(savedConfig.initialVideoId)
+  }else{
+    savedConfig.initialVideoId = "bUaHbs09sOo"
+  }
+
+
   return savedConfig
 
 }

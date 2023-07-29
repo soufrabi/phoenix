@@ -42,10 +42,10 @@ const WatchSuggestionsSideBar = () => {
 
       <p>Watch Suggestions </p>
 
-      <section>
+      <div style={{height:"1000px", overflow:"auto"}}>
 
         {
-          watchSuggestions.videoList.map((item, index) => {
+          watchSuggestions.videoList.map((item) => {
             // console.log(item)
             // console.log(item.videoId)
             return (
@@ -53,7 +53,7 @@ const WatchSuggestionsSideBar = () => {
             )
           })
         }
-      </section>
+      </div>
 
       <button onClick={printWatchSuggestions}>Print Watch Suggestions</button>
     </div>

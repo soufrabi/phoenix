@@ -14,7 +14,7 @@ const FrontEnd = () => {
     <div style={{}}>
       <TopBar />
 
-      <div style={{ position: "absolute", top: "100px", border:"2px solid black"}}>
+      <div style={{ position: "absolute", top: "40px", border:"2px solid black"}}>
         <div style={{ display:"flex" ,flexDirection:"row"}}>
           <div style={{border:"2px groove black"}}>
             <VideoPlayer />

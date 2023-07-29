@@ -2,32 +2,34 @@ import React from "react";
 import { useState } from "react";
 import { invidious_api } from "../apis";
 import { watchSuggestionsActions } from "../store/watch-suggestions";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const SearchBar = (props) => {
- 
-  const dispatch  = useDispatch()
 
-  const [searchTerm,setSearchTerm] = useState("")
+  const dispatch = useDispatch()
 
-  const searchButtonClicked = async () => {
-    console.log("Search results for : "+searchTerm)
-  
+  const [searchTerm, setSearchTerm] = useState("")
+
+  const handleSearch = async (e) => {
+
+    e.preventDefault()
+
+    console.log("Search results for : " + searchTerm)
+
     if (searchTerm.length > 0) {
-      
+
       const invidiousSearchResults = await invidious_api.getSearchResults(searchTerm)
       console.log("Search result as obtained by the Search Bar")
       console.log(invidiousSearchResults)
 
-      // props.handleSearch(invidiousSearchResults)
       dispatch(watchSuggestionsActions.updateSearchResults(invidiousSearchResults))
 
     }
-  
-     }
 
-  const handleInputChange = (event)=>{
-    
+  }
+
+  const handleInputChange = (event) => {
+
     // console.log(event.target.value)
     setSearchTerm(event.target.value)
 
@@ -37,8 +39,10 @@ const SearchBar = (props) => {
 
   return (
     <>
-      <button type="button" onClick={searchButtonClicked} >Search</button>
-      <input type="text" onChange={handleInputChange}  />
+      <form onSubmit={handleSearch}>
+        <button type="submit" >Search</button>
+        <input type="text" onChange={handleInputChange} />
+      </form>
     </>
   )
 
@@ -46,4 +50,4 @@ const SearchBar = (props) => {
 }
 
 
-export {SearchBar}
+export { SearchBar }

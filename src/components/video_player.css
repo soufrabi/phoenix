@@ -1,0 +1,98 @@
+
+
+.video-container {
+  position: relative;
+  /* border: 15px grey solid; */
+  display: flex;
+  justify-content: center;
+  /* margin-inline: auto; */
+
+}
+
+.video-controls-container {
+
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  opacity:0;
+  /* hidden by default */
+  color: white;
+  /* border: 15px blue solid; */
+
+}
+
+
+.video-container:hover .video-controls-container,
+.video-container:focus-within .video-controls-container,
+.video-container.paused .video-controls-container {
+  opacity: 1;
+}
+
+
+/* .play-pause-btn { */
+/* } */
+
+
+.video-controls-container .video-controls {
+  display:flex;
+  align-items: center;
+}
+
+.video-controls-container .video-controls button{
+
+  background: none;
+  border: none;
+  /* remove default button styling*/
+
+  color: inherit;
+
+  width: 30px;
+  height: 30px;
+   /* svgs are only visible when their dimensions are defined */
+
+}
+
+.video-container.paused .pause-icon {
+  display: none;
+}
+
+
+.video-container:not(.paused) .play-icon {
+  display: none;
+}
+
+
+.volume-container {
+  display: flex;
+
+}
+
+.volume-high-icon,
+.volume-low-icon,
+.volume-muted-icon {
+  display: none;
+}
+
+.video-container.volume-high .volume-high-icon {
+  display: block;
+}
+.video-container.volume-low .volume-low-icon {
+  display: block;
+}
+.video-container.volume-muted .volume-muted-icon {
+  display: block;
+}
+
+
+.duration-container {
+  display: flex;
+  align-items: center;
+  /* flex-grow: 1; */
+}
+
+
+.right-buttons {
+  display: flex;
+  align-items: center;
+  margin-right: 0px;
+}

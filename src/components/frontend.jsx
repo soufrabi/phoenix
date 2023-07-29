@@ -11,6 +11,7 @@ import {HistorySideview} from "./history_sideview.jsx"
 import {PlaylistsSideview} from "./playlists_sideview.jsx"
 import { styles } from "./styles";
 import "./style.css"
+import "./video_player.css"
 
 
 const WatchPage = () => {
@@ -22,11 +23,11 @@ const WatchPage = () => {
         <div style={{ border: "2px groove black" }}>
           <VideoPlayer />
         </div>
-        <div style={{ border: "2px groove black" }}>
-          <PlaylistsSideview />
-          {/* <WatchSuggestionsSideBar /> */}
-          {/* <HistorySideview /> */}
-        </div>
+        {/* <div style={{ border: "2px groove black" }}> */}
+        {/*   <PlaylistsSideview /> */}
+        {/*   {/1* <WatchSuggestionsSideBar /> *1/} */}
+        {/*   {/1* <HistorySideview /> *1/} */}
+        {/* </div> */}
       </div>
     </div>
   )

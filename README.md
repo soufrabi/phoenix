@@ -22,8 +22,34 @@
 An open source YouTube front-end using Invidious API
 </p>
 
+## Screenshots
+<div align="center" style=""> 
 
-To try out visit 
+  <img alt="screenshot1" style="max-width:40vw;" src="https://awesomedev12.github.io/assets/phoenix/screenshots/screenshot1.png">
+
+</div>
+
+## Quick Start
+Visit 
 <a href="https://awesomedev12.github.io/phoenix/">link</a>
+and start watching videos now
+
+## Development
+
+### Testing
+
+```
+git clone https://github.com/awesomeDev12/phoenix.git
+cd phoenix
+npm install
+npm run dev
+```
 
 
+## Author
+
+<a href = "https://awesomedev12.github.io/site" style="text-decoration: none; color: inherit;">Anirban Dey</a>
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the LICENSE.md file for details

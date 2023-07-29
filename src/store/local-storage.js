@@ -1,26 +1,26 @@
 
 
-const loadFromLocalStorage = ()=>{
+const loadConfig = () => {
 
 
   const savedConfig = {}
 
   const playerWidthValTemp = localStorage.getItem("playerWidthVal")
-  if(playerWidthValTemp != null && playerWidthValTemp<2000 && playerWidthValTemp >200){
+  if (playerWidthValTemp != null && playerWidthValTemp < 2000 && playerWidthValTemp > 200) {
     savedConfig.playerWidthVal = parseInt(playerWidthValTemp)
     console.log(savedConfig.playerWidthVal)
-  }else{
+  } else {
     savedConfig.playerWidthVal = 700
   }
 
-  savedConfig.playerWidth= String(savedConfig.playerWidthVal) + "px"
+  savedConfig.playerWidth = String(savedConfig.playerWidthVal) + "px"
 
 
   const initialVideoId = localStorage.getItem("initialVideoId")
-  if(initialVideoId != null){
+  if (initialVideoId != null) {
     savedConfig.initialVideoId = initialVideoId
     console.log(savedConfig.initialVideoId)
-  }else{
+  } else {
     savedConfig.initialVideoId = "bUaHbs09sOo"
   }
 
@@ -29,6 +29,21 @@ const loadFromLocalStorage = ()=>{
 
 }
 
-const savedConfig = loadFromLocalStorage()
+const loadHistory = () => {
+  const storedObject = JSON.parse(localStorage.getItem("myObject"));
+  console.log(storedObject); // { name: "John", age: 30, isMarried: true }
 
-export {savedConfig}
+
+}
+
+
+const saveHistory = () => {
+
+  const myObject = { name: "John", age: 30, isMarried: true };
+  localStorage.setItem("myObject", JSON.stringify(myObject));
+
+}
+
+const savedConfig = loadConfig()
+
+export { savedConfig }

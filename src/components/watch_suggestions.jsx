@@ -42,7 +42,7 @@ const WatchSuggestionsSideBar = () => {
 
       <p>Watch Suggestions </p>
 
-      <div style={{height:"1000px", overflow:"auto"}}>
+      <div style={{maxHeight:"800px", overflow:"auto"}}>
 
         {
           watchSuggestions.videoList.map((item) => {

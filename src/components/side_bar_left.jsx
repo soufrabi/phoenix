@@ -31,6 +31,11 @@ const SideBarLeft = () => {
     dispatch(pageActions.changePage("SETTINGS_PAGE"))
   }
 
+  const gotoHomepage = ()=>{
+    console.log("Go to HOMEPAGE button clicked")
+    dispatch(pageActions.changePage("HOME_PAGE"))
+  }
+
   const handleLogout = ()=> {
 
     console.log("Logout button clicked")
@@ -62,6 +67,14 @@ const SideBarLeft = () => {
         </div>
 
         <ul>
+          
+          <li onClick={()=>{gotoHomepage()}} >
+            <i className="fa fa-home" />
+            <span className="nav-item" style={{opacity:navItemOpacity}}>Home</span>
+
+            <span className="tooltip">Home </span>
+          </li>
+
           <li>
             <i className="bx bxs-grid-alt" />
             <span className="nav-item" style={{opacity:navItemOpacity}}>Dashboard</span>
@@ -84,16 +97,16 @@ const SideBarLeft = () => {
             <span className="tooltip">History</span>
           </li>
 
-          <li>
-            <i onClick={()=>{gotoSettings()}} className="bx bxs-cog" />
+          <li onClick={()=>{gotoSettings()}}>
+            <i className="bx bxs-cog" />
             <span className="nav-item" style={{opacity:navItemOpacity}}>Settings</span>
          
             <span className="tooltip">Settings</span>
           </li>
 
-          <li>
+          <li onClick={()=>{handleLogout()}} >
 
-            <i onClick={()=>{handleLogout()}} className="bx bx-log-out" />
+            <i  className="bx bx-log-out" />
             <span className="nav-item" style={{opacity:navItemOpacity}} >Logout</span>
 
             <span className="tooltip">Logout</span>

@@ -23,7 +23,7 @@
 
 .side-bar-left .nav-item {
     margin-left: 0.5em;
-   font-size: 150%;
+    font-size: 150%;
 }
 
 .side-bar-left ul {
@@ -53,4 +53,15 @@
 .side-bar-left ul li:hover .tooltip{
     background: #444;
     /* opacity: 1; */
+}
+
+
+@media (max-width : 576px){
+
+    .side-bar-left i {
+        font-size: 150%;
+    }
+    .side-bar-left .nav-item {
+        font-size: 125%;
+    }
 }

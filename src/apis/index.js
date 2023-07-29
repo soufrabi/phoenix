@@ -6,11 +6,12 @@ const getInvidiousInstances = ()=> {
 }
 
 const invidious_instances = ["invidious.snopyta.org","yt.floss.media","yewtu.be",]
-const invidious_instance = invidious_instances[1]
+let invidious_instance = invidious_instances[1]
 
 const invidious = axios.create({
   baseURL: "https://"+invidious_instance
 })
+
 
 
 // const getSearchResults = (search_term) => {
@@ -34,7 +35,7 @@ const invidious = axios.create({
 
 
 const getSearchResults = async (search_term)=>{
-  const response = await invidious.get("https://invidious.snopyta.org/api/v1/search?q="+search_term,{})
+  const response = await invidious.get("https://"+invidious_instance+"/api/v1/search?q="+search_term,{})
 
   const data = response.data
   console.log("Search results as obtained by the API : ")

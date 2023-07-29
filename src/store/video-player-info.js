@@ -13,10 +13,10 @@ const videoPlayerInfoSlice = createSlice({
     preferences: loadFromLocalStorage("playerPreferences", {
       playerWidthVal: 90,
       playerWidth: "90vw",
-      autoplay: false,
+      autoplay: true,
       playerControls: false,
       muted: false,
-      volume: 0,
+      volume: "1",
       loop: true,
     }
     )

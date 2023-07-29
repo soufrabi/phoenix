@@ -46,6 +46,54 @@ const VolumeIcons = (props) => {
   }
 
 
+}
+
+
+const TheatreIcons = (props) => {
+
+
+  if (props.tall === true) {
+    return (
+      <svg className="tall" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" />
+      </svg>
+    )
+
+  }
+  else {
+    return (
+
+      <svg className="wide" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 7H5c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 8H5V9h14v6z" />
+      </svg>
+    )
+  }
+
+
+}
+
+const FullscreenIcons = (props) => {
+
+  if (props.fullscreen === true) {
+    return (
+
+      <svg className="open" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+      </svg>
+
+    )
+
+
+  } else {
+    return (
+
+      <svg className="close" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z" />
+      </svg>
+
+    )
+  }
+
 
 }
 
@@ -217,6 +265,24 @@ const VideoPlayer = () => {
 
   }
 
+  const toggleMiniplayerMode = () => {
+    if (document.fullscreenElement == null) {
+      videoContainerRef.current.requestFullscreen()
+    }
+    else {
+      document.exitFullscreen()
+    }
+  }
+
+  const toggleTheatreMode = () => {
+    if (document.fullscreenElement == null) {
+      videoContainerRef.current.requestFullscreen()
+    }
+    else {
+      document.exitFullscreen()
+    }
+  }
+
   const toggleFullScreenMode = () => {
     if (document.fullscreenElement == null) {
       videoContainerRef.current.requestFullscreen()
@@ -322,32 +388,19 @@ const VideoPlayer = () => {
               <button className="speed-btn wide-btn">
                 1x
               </button>
-              <button className="mini-player-btn">
+              <button className="mini-player-btn" onClick={toggleMiniplayerMode}>
                 <svg viewBox="0 0 24 24">
                   <path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z" />
                 </svg>
               </button>
 
-              <button className="mini-player-btn">
-                <svg viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z" />
-                </svg>
-              </button>
-              <button className="theater-btn">
-                <svg className="tall" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" />
-                </svg>
-                <svg className="wide" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M19 7H5c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 8H5V9h14v6z" />
-                </svg>
+              <button className="theater-btn" onClick={toggleTheatreMode}>
+                <TheatreIcons tall={true} />
+
               </button>
               <button className="full-screen-btn" onClick={toggleFullScreenMode}>
-                <svg className="open" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
-                </svg>
-                <svg className="close" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z" />
-                </svg>
+                <FullscreenIcons fullscreen={true} />
+
               </button>
             </div>
 

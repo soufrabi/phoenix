@@ -6,6 +6,8 @@ import watchSuggestionsSlice from "./watch-suggestions.js";
 import videoPlayerInfoSlice from "./video-player-info.js";
 import searchResultsExploreSlice from "./search-explore.js";
 import pageSlice from "./page.js";
+import playlistsSlice from "./playlists.js";
+import historySlice from "./history.js"
 
 const store = configureStore({
   reducer: {
@@ -14,7 +16,9 @@ const store = configureStore({
     page: pageSlice.reducer,
     watchSuggestions: watchSuggestionsSlice.reducer,
     videoPlayerInfo: videoPlayerInfoSlice.reducer,
-    searchResultsExplore: searchResultsExploreSlice.reducer
+    searchResultsExplore: searchResultsExploreSlice.reducer,
+    playlists: playlistsSlice.reducer,
+    history: historySlice.reducer
   }
 
 })

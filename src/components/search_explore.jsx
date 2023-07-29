@@ -56,7 +56,8 @@ const SearchItem = (props) => {
         <p>
           {props.data.title} <br />
           {props.data.videoId} <br />
-          {props.data.author}
+          {props.data.author} <br />
+          {props.data.type}
         </p>
 
       </div>

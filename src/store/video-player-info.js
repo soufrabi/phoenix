@@ -9,6 +9,11 @@ const videoPlayerInfoSlice = createSlice({
   initialState: {
     videoId: "bUaHbs09sOo",
     videoUrl: "",
+    videoStreams : [],
+    audioStreams : [],
+    videoStreamIndex : 0,
+    audioStreamIndex : 0,
+    description : "",
     videoThumbnailUrl: "",
     preferences: loadFromLocalStorage("playerPreferences", {
       playerWidthVal: 90,
@@ -32,11 +37,30 @@ const videoPlayerInfoSlice = createSlice({
 
     updateVideo(state, action) {
       const newVideo = action.payload
-      state.videoUrl = newVideo.videoUrl
+      state.videoStreams = newVideo.videoStreams
+      state.audioStreams = newVideo.audioStreams
+      state.videoStreamIndex = newVideo.videoStreams.length-1
+      state.audioStreamIndex = newVideo.audioStreams.length-1
+      state.videoUrl = newVideo.videoStreams[state.videoStreamIndex].url
       state.videoThumbnailUrl = newVideo.videoThumbnailUrl
+      
+
 
     },
+    increaseVideoQuality(state) {
+      const n = state.videoStreams.length
+      state.videoStreamIndex = (state.videoStreamIndex + 1)%n
+      console.log(state.videoStreamIndex)
+      state.videoUrl = state.videoStreams[state.videoStreamIndex].url
+    },
+    decreaseVideoQuality(state) {
+      const n = state.videoStreams.length
+      state.videoStreamIndex = (state.videoStreamIndex + n - 1 )%n
+      console.log(state.videoStreamIndex)
+      state.videoUrl = state.videoStreams[state.videoStreamIndex].url
 
+    },
+    
     updateVolume(state,action){
       const newVolume = action.payload
       state.preferences.volume = newVolume

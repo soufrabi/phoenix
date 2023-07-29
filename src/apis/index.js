@@ -52,7 +52,6 @@ const getVideoInfo = async (video_id) => {
 
   let videoStreams = []
   let audioStreams = []
-  let thumbnailUrls = []
 
   // let request_string = "api/v1/videos/"+video_id
   let request_string = "https://"+invidious_instance+"/api/v1/videos/"+video_id
@@ -64,6 +63,14 @@ const getVideoInfo = async (video_id) => {
   const data = response.data
   console.log(data)
   const formatStreams = data.formatStreams
+  const adaptiveFormats = data.adaptiveFormats
+  const description = data.description
+  const viewCount = data.viewCount
+  const likeCount = data.likeCount
+  const genre = data.genre
+  const author = data.author
+  const authorId = data.authorId
+  const authorThumbnail = data.authorThumbnails[data.authorThumbnails.length-1].url
   // console.log(formatStreams)
 
   // const urls_types = formatStreams.map((el)=>{
@@ -78,25 +85,44 @@ const getVideoInfo = async (video_id) => {
   
 
 
-  for (let index = 0; index < formatStreams.length; index++) {
-    const element = formatStreams[index];
+  // for (let index = 0; index < formatStreams.length; index++) {
+  //   const element = formatStreams[index];
 
 
-    if (element.type.substring(0, 9) === "video/mp4") {
-      videoUrl = element.url
-      // console.log("Video Url as fetched by the API : " + videoUrl)
-      // break
+  //   if (element.type.substring(0, 9) === "video/mp4") {
+  //     videoUrl = element.url
+  //     // console.log("Video Url as fetched by the API : " + videoUrl)
+  //     // break
 
 
+  //   }
+  // }
+
+
+  formatStreams.map((el,index)=>{
+    const url = el.url
+    // console.log(el)
+
+    if(el.type.substring(0,9) === "video/mp4"){
+      videoStreams.push(el)
     }
-  }
+  
+  })
+
+
+  console.log("Video Streams")
+  console.log(videoStreams)
+  console.log("Audio Streams")
+  console.log(audioStreams)
 
 
   videoThumbnailUrl = data.videoThumbnails[0].url
 
     return {
-      videoUrl:videoUrl,
-      videoThumbnailUrl:videoThumbnailUrl
+      videoThumbnailUrl:videoThumbnailUrl,
+      videoStreams:videoStreams,
+      audioStreams:audioStreams,
+      description:description,
     }
 
   

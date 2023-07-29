@@ -44,7 +44,6 @@ const SideBarLeft = () => {
 
     if (confirmation) {
       console.log("Deleting Local Storage")
-      alert("Deleting Local Storage")
       localStorage.clear()
     } else {
       console.log("Not Deleting Local Storage")

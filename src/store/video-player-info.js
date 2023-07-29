@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { invidious_api } from "../apis";
+import { savedConfig } from "./local-storage";
 
 const videoPlayerInfoSlice = createSlice({
 
@@ -8,8 +9,8 @@ const videoPlayerInfoSlice = createSlice({
     videoId:"bUaHbs09sOo",
     videoUrl: "",
     videoThumbnailUrl: "",
-    playerWidthVal: 700,
-    playerWidth: "700px"
+    playerWidthVal: savedConfig.playerWidthVal,
+    playerWidth: savedConfig.playerWidth
   },
   reducers: {
     updateVideoId(state,action){
@@ -50,7 +51,7 @@ const videoPlayerInfoSlice = createSlice({
 
       const playerWidthVal = localStorage.getItem("playerWidthVal")
       if(playerWidthVal != null){
-        state.playerWidthVal = playerWidthVal
+        state.playerWidthVal = parseInt(playerWidthVal)
       }
     }
   }

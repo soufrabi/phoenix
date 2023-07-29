@@ -66,9 +66,7 @@ const VideoPlayer = () => {
 
     fetchData()
 
-    dispatch(videoPlayerInfoActions.loadFromLocalStorage())
-
-  }, [videoPlayerInfo.videoId])
+  }, [videoPlayerInfo.videoId, videoPlayerInfo.playerWidth])
 
 
   return (

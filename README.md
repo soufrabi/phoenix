@@ -25,8 +25,7 @@ An open source YouTube front-end using Invidious API
 ## Screenshots
 <div align="center" style=""> 
 
-  <img alt="screenshot1" max-width="50px" max-height="40px" src="https://github.com/awesomeDev12/assets/blob/master/phoenix/screenshots/screenshot1.png">
-  <img alt="screenshot1" max-width="50px" max-height="40px" src="https://raw.githubusercontent.com/awesomeDev12/assets/master/phoenix/screenshots/screenshot1.png">
+  <img alt="screenshot1" style="max-width:40vw;" src="https://awesomedev12.github.io/assets/phoenix/screenshots/screenshot1.png">
 
 </div>
 

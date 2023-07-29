@@ -33,10 +33,19 @@ const SideBarLeft = () => {
 
   const handleLogout = ()=> {
 
-    console.log("Logout button clicked deleting all local storage items")
-    alert("Deleting Local Storage")
-    
-    localStorage.clear()
+    console.log("Logout button clicked")
+
+    var confirmation= confirm("Do you want to delete LocalStorage")
+
+    if (confirmation) {
+      console.log("Deleting Local Storage")
+      alert("Deleting Local Storage")
+      localStorage.clear()
+    } else {
+      console.log("Not Deleting Local Storage")
+    }
+
+
 
     
   }

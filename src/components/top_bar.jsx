@@ -6,7 +6,7 @@ const TopBar = (props) => {
 
   return (
     <div style={styles.topBar}>
-      <SearchBar handleSearch={props.handleSearch}/>
+      <SearchBar />
     </div>
   )
 }

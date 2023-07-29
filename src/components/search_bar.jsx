@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { invidious_api } from "../apis";
+import { watchSuggestionsActions } from "../store/watch-suggestions";
+import { useSelector,useDispatch } from "react-redux";
 
 const SearchBar = (props) => {
-  
+ 
+  const dispatch  = useDispatch()
+
   const [searchTerm,setSearchTerm] = useState("")
 
   const searchButtonClicked = async () => {
@@ -15,7 +19,8 @@ const SearchBar = (props) => {
       console.log("Search result as obtained by the Search Bar")
       console.log(invidiousSearchResults)
 
-      props.handleSearch(invidiousSearchResults)
+      // props.handleSearch(invidiousSearchResults)
+      dispatch(watchSuggestionsActions.updateSearchResults(invidiousSearchResults))
 
     }
   

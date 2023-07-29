@@ -1,21 +1,41 @@
-import React from "react"
+import React, { useDebugValue } from "react"
 import { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { nanoid } from "nanoid"
 import { styles } from "./styles"
+import { videoPlayerInfoActions } from "../store/video-player-info"
 
 const WatchSuggestionItem = (props) => {
 
+
+
+  const dispatch = useDispatch()
+  const updateVideoId = async () => {
+    dispatch(videoPlayerInfoActions.updateVideoId({
+      videoId: props.videoId
+    }
+    ))
+
+  }
+
   return (
-    <p>
-      Danger of fighting
-      <a href={props.videoID}>{props.videoID}</a>
-    </p>
+    <div>
+      <button onClick={updateVideoId}>{props.title}</button>
+    </div>
   )
 
 }
 
 const WatchSuggestionsSideBar = () => {
 
-  const [watchSuggestionInfoList, setWatchSuggestionInfoList] = useState([ {"videoID": "Power" }, { "videoID": "Darklord" }])
+  const watchSuggestions = useSelector((state) => state.watchSuggestions)
+
+
+  const printWatchSuggestions = () => {
+
+    console.log("Watch Suggestions")
+    console.log(watchSuggestions)
+  }
 
   return (
     <div>
@@ -23,20 +43,19 @@ const WatchSuggestionsSideBar = () => {
       <p>Watch Suggestions </p>
 
       <section>
-        <WatchSuggestionItem videoID="300" />
-      </section>
-
-      <section>
 
         {
-          watchSuggestionInfoList.map((item)=>{
-            console.log(item)
+          watchSuggestions.videoList.map((item, index) => {
+            // console.log(item)
+            // console.log(item.videoId)
             return (
-                <WatchSuggestionItem videoID={item.videoID}/>
+              <WatchSuggestionItem key={nanoid()} videoId={item.videoId} title={item.title} />
             )
           })
         }
       </section>
+
+      <button onClick={printWatchSuggestions}>Print Watch Suggestions</button>
     </div>
   )
 

@@ -27,7 +27,8 @@ const topBar = {
   zIndex: "999",
 }
 
-const styles = {
+
+let styles = {
   frontEnd: frontEnd,
   topBar: topBar,
   watchSuggestionSideBar: watchSuggestionSideBar,

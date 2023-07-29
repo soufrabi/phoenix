@@ -1,0 +1,27 @@
+
+
+.homepage {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.homepage .name {
+  text-align: center;
+  font-size: 4rem;
+}
+
+.homepage .description {
+  margin-top: -50px;
+  text-align: center;
+  font-style: italic;
+  font-size: 1rem;
+}

@@ -6,8 +6,8 @@ const TopBar = (props) => {
 
 
   return (
-    <div id="top-bar">
-      <div id="phoenix-name">
+    <div className="top-bar">
+      <div className="phoenix-name">
         Phoenix
       </div>
 

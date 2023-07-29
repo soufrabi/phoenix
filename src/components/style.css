@@ -7,7 +7,7 @@ a {
 
 
 
-#top-bar {
+.top-bar {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -60,7 +60,7 @@ a {
 
 }
 
-#phoenix-name {
+.top-bar .phoenix-name {
   color:white;
   font-size: 2em;
   font-family: monospace;
@@ -83,7 +83,7 @@ input::placeholder {
 
 @media (max-width: 576px) {
 
-  #top-bar {
+  .top-bar {
     padding-left: 0em;
   }
 
@@ -95,7 +95,7 @@ input::placeholder {
     width: 14em;
   }
 
-  #phoenix-name {
+  .top-bar .phoenix-name {
     display:none
     /* font-size: 1.7em; */
     /* padding-left: 0.4em; */

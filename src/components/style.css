@@ -1,6 +1,85 @@
+/* CSS Style */
+
+#top-bar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 75px;
+  background: #3D3846;
+  width: 100vw;
+  padding-left: 0.5em;
+  padding-top: 5px;
+  z-index: 999;
+
+}
+
+#search-bar-input {
+  height: 40px;
+  background: #241F31;
+  color: white;
+  padding-left: 2.8em;
+  margin-top: 12px;
+  margin-bottom: 19px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  font-size: 1.3em;
+  width: 20em;
+
+}
+
+#search-explore {
+  display:grid ;
+  grid-gap:1em;
+  margin: 0.5em;
+
+}
+
+#phoenix-name {
+  color:white;
+  font-size: 2em;
+  font-family: monospace;
+  text-align: center;
+  padding-left: 1.2em;
+}
 
 input::placeholder {
   color: #ccc;
   font-style: italic;
 }
 
+@media (max-width: 576px) {
+
+  #top-bar {
+    padding-left: 0em;
+  }
+
+  #search-explore {
+    grid-template-columns: 1fr;
+  }
+
+  #search-bar-input {
+    width: 14em;
+  }
+
+  #phoenix-name {
+    display:none
+    /* font-size: 1.7em; */
+    /* padding-left: 0.4em; */
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 1000px) {
+  #search-explore {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media (min-width: 1000px) {
+  #search-explore {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

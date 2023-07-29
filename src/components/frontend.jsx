@@ -10,6 +10,7 @@ import {HomePage} from "./homepage.jsx"
 import {HistorySideview} from "./history_sideview.jsx"
 import {PlaylistsSideview} from "./playlists_sideview.jsx"
 import { styles } from "./styles";
+import "./style.css"
 
 const WatchPage = () => {
 

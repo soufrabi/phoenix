@@ -1,11 +1,12 @@
 import React from "react";
 import { SearchBar } from "./search_bar";
-import { styles } from "./styles";
+// import { styles } from "./styles";
+import "./style.css"
 const TopBar = (props) => {
 
 
   return (
-    <div style={styles.topBar}>
+    <div id="top-bar">
       <SearchBar />
     </div>
   )

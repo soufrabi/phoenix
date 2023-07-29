@@ -100,6 +100,10 @@ input::placeholder {
     /* font-size: 1.7em; */
     /* padding-left: 0.4em; */
   }
+
+  .top-bar .top-bar-right {
+    display: none;
+  }
 }
 
 

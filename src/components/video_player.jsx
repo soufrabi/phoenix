@@ -65,6 +65,11 @@ const VideoPlayer = () => {
     dispatch(videoPlayerInfoActions.togglePlayerControls())
   }
 
+  const copyVideoLinkToClipboard = () => {
+    const link = videoPlayerInfo.videoUrl;
+    navigator.clipboard.writeText(link)
+  }
+
   const reloadButtonClicked = () => {
     console.log("Reload URL button clicked")
 
@@ -90,7 +95,7 @@ const VideoPlayer = () => {
         </p>
       </video>
 
-      <div style={{display:"grid", gridTemplateRows:"1fr 1fr", gridTemplateColumns:"1fr 1fr 1fr"}}>
+      <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gridTemplateColumns: "1fr 1fr 1fr" }}>
         <button type="button" onClick={reloadButtonClicked}>Reload URL</button>
         <button type="button" onClick={printVideoPlayerInfo}>printVideoPlayerInfo</button>
         <button type="button" onClick={saveAsInitialVideo}>Save as Initial Video</button>
@@ -98,6 +103,7 @@ const VideoPlayer = () => {
         <button type="button" onClick={decreasePlayerSize}>Decrease Player Size</button>
         <button type="button" onClick={toggleAutoplay}>Toggle Autoplay</button>
         <button type="button" onClick={togglePlayerControls}>Toggle Controls</button>
+        <button type="button" onClick={copyVideoLinkToClipboard}>Copy Video Link to Clipboard</button>
       </div>
 
 

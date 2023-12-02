@@ -4,17 +4,17 @@
   <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">
     <img alt="License: AGPLv3" src="https://shields.io/badge/License-AGPL%20v3-blue.svg">
   </a>
-  <a href="https://github.com/anirbandey1/phoenix/commits/master">
-    <img alt="GitHub commits" src="https://img.shields.io/github/commit-activity/y/anirbandey1/phoenix?color=red&label=commits">
+  <a href="https://github.com/soufrabi/phoenix/commits/master">
+    <img alt="GitHub commits" src="https://img.shields.io/github/commit-activity/y/soufrabi/phoenix?color=red&label=commits">
   </a>
-  <a href="https://github.com/anirbandey1/phoenix/issues">
-    <img alt="GitHub issues" src="https://img.shields.io/github/issues/anirbandey1/phoenix?color=important">
+  <a href="https://github.com/soufrabi/phoenix/issues">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/soufrabi/phoenix?color=important">
   </a>
-  <a href="https://github.com/anirbandey1/phoenix/pulls">
-    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/anirbandey1/phoenix?color=blueviolet">
+  <a href="https://github.com/soufrabi/phoenix/pulls">
+    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/soufrabi/phoenix?color=blueviolet">
   </a>
-  <a href="https://github.com/anirbandey1/phoenix/stargazers">
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/anirbandey1/phoenix?style=social">
+  <a href="https://github.com/soufrabi/phoenix/stargazers">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/soufrabi/phoenix?style=social">
   </a>
 </p>
  
@@ -25,13 +25,13 @@ An open source YouTube front-end using Invidious API
 ## Screenshots
 <div align="center" style=""> 
 
-  <img alt="screenshot1" style="max-width:40vw;" src="https://anirbandey1.github.io/assets/phoenix/screenshots/screenshot1.png">
+  <img alt="screenshot1" style="max-width:40vw;" src="https://soufrabi.github.io/assets/phoenix/screenshots/screenshot1.png">
 
 </div>
 
 ## Quick Start
 Visit 
-<a href="https://anirbandey1.github.io/phoenix/">link</a>
+<a href="https://soufrabi.github.io/phoenix/">link</a>
 and start watching videos now
 
 ## Development
@@ -39,7 +39,7 @@ and start watching videos now
 ### Testing
 
 ```
-git clone https://github.com/anirbandey1/phoenix.git
+git clone https://github.com/soufrabi/phoenix.git
 cd phoenix
 npm install
 npm run dev

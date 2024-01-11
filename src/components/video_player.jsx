@@ -435,7 +435,10 @@ const VideoPlayer = () => {
             {/* </div> */}
             <input className="timeline-slider" ref={timelineSliderRef}
               type="range" min="0" max="1" step="any"
-              onChange={handleTimelineChange} />
+              onChange={handleTimelineChange}
+              onKeyDown={(ev)=>{ev.preventDefault()}}
+              onWheelCapture={(ev)=>{ev.preventDefault()}}
+            />
 
           </div>
           <div className="video-controls">
@@ -457,6 +460,7 @@ const VideoPlayer = () => {
               <input className="volume-slider" ref={volumeSliderRef}
                 type="range" min="0" max="1" step="any"
                 onChange={volumeChanged}
+                onKeyDown={(ev)=>{ev.preventDefault()}}
               // onWheel={(e) => { e.preventDefault() }}
               // onWheelCapture={(e) => { e.preventDefault() }}
 

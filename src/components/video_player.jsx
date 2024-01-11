@@ -219,7 +219,7 @@ const VideoPlayer = () => {
       const newCurrentTime = parseFloat(value) * duration
       // console.log(value)
       // console.log(duration)
-      // console.log(newCurrentTime)
+      console.log("Current Time : ",newCurrentTime)
       videoRef.current.currentTime = newCurrentTime
     }
     else {
@@ -415,6 +415,7 @@ const VideoPlayer = () => {
 
     timelineSliderRef.current.value = 0
 
+    console.log("Preferences : ",videoPlayerInfo.preferences)
     volumeSliderRef.current.value = videoPlayerInfo.preferences.volume
     videoRef.current.volume = videoPlayerInfo.preferences.volume
 

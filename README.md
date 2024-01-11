@@ -31,7 +31,7 @@ An open source YouTube front-end using Invidious API
 
 ## Quick Start
 Visit 
-<a href="https://soufrabi.github.io/phoenix/">link</a>
+<a href="https://phoenix.soufrabi.com/">link</a>
 and start watching videos now
 
 ## Development

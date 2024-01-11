@@ -26,8 +26,8 @@ const SearchItem = (props) => {
       console.log("Its a channel")
     }
   }
-  
-  const handleContexMenu = (e)=> {
+
+  const handleContextMenu = (e)=> {
     // for right clicking on image
     e.preventDefault()
 
@@ -71,10 +71,10 @@ const SearchItem = (props) => {
           }}
       >
 
-        <img 
-          onContextMenu={handleContexMenu} 
-          width="100%" 
-          src={thumbnailUrl} 
+        <img
+          onContextMenu={handleContextMenu}
+          width="100%"
+          src={thumbnailUrl}
           alt=""
 
           style={{

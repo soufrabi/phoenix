@@ -310,6 +310,90 @@ const VideoPlayer = () => {
     console.log(typeof(videoRef.current.playbackRate))
   }
 
+  const changeVolume = (delta)=> {
+      // delta should be between 0 and 1
+
+      const currentVolume = videoRef.current.volume
+      const volumeChangeDelta = Math.abs(delta)
+      console.log("Current Volume : ",currentVolume)
+      let newVolume = currentVolume
+
+      if(delta<0){
+              newVolume = currentVolume-volumeChangeDelta
+              if(newVolume<0){
+                  newVolume = 0
+              }
+              videoRef.current.volume = newVolume
+            dispatch(videoPlayerInfoActions.updateVolume(newVolume.toString()))
+      }else if(delta>0){
+            newVolume = currentVolume+volumeChangeDelta
+            if(newVolume > 1.0 ){
+                newVolume = 1.0
+            }
+            videoRef.current.volume = newVolume
+
+            dispatch(videoPlayerInfoActions.updateVolume(newVolume.toString()))
+      }
+
+  }
+
+ const changeTime = (delta)=> {
+     // delta represents number of seconds
+      const duration = videoRef.current.duration
+      const currentTime = videoRef.current.currentTime
+      const timeChangeDelta = Math.abs(delta)
+      console.log("Current time : ",currentTime)
+      let newCurrentTime = currentTime
+
+     if(delta<0){
+              newCurrentTime = currentTime-timeChangeDelta
+              if(newCurrentTime < 0){
+                newCurrentTime = 0
+              }
+              videoRef.current.currentTime = newCurrentTime
+              setCurrentTime(newCurrentTime)
+
+     }else if(delta>0){
+             newCurrentTime = currentTime+timeChangeDelta
+              if(newCurrentTime > duration){
+                  newCurrentTime = duration
+              }
+              videoRef.current.currentTime = newCurrentTime
+              setCurrentTime(newCurrentTime)
+
+     }
+
+ }
+
+  const handleKeyEventsForVolumeAndTimeline = (ev)=>{
+
+      console.log(ev.key)
+
+      switch(ev.key){
+        case "ArrowUp":
+            console.log("ArrowUp for VolumeUp")
+            changeVolume(0.05)
+            break;
+        case "ArrowDown":
+            console.log("ArrowDown for VolumeDown")
+            changeVolume(-0.05)
+            break;
+        case "ArrowLeft":
+            console.log("ArrowLeft for TimeLineLeft")
+            changeTime(-5)
+            break;
+        case "ArrowRight":
+            console.log("ArrowRight for TimeLineRight")
+            changeTime(5)
+            break;
+        default:
+            console.log('Not Handling KeyDownEvent for ',ev.key)
+
+      }
+
+
+  }
+
   const increaseVideoQuality = ()=>{
 
     dispatch(videoPlayerInfoActions.increaseVideoQuality())

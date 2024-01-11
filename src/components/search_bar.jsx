@@ -4,7 +4,7 @@ import { invidious_api } from "../apis";
 import { watchSuggestionsActions } from "../store/watch-suggestions";
 import { searchResultsActions } from "../store/search-results"
 import { useSelector, useDispatch } from "react-redux";
-import { pageActions } from "../store/page";
+import { generalActions } from "../store/general";
 
 
 const SearchBar = (props) => {
@@ -27,7 +27,7 @@ const SearchBar = (props) => {
 
       dispatch(watchSuggestionsActions.updateSearchResults(invidiousSearchResults))
       dispatch(searchResultsActions.updateSearchResults(invidiousSearchResults))
-      dispatch(pageActions.changePage("SEARCH_EXPLORE_PAGE"))
+      dispatch(generalActions.changePage("SEARCH_EXPLORE_PAGE"))
 
     }
 

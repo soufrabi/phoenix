@@ -18,7 +18,7 @@ import "../styles/settings_page.css"
 import { SideBarLeft } from "./side_bar_left";
 import { SettingsPage } from "./settings_page";
 import { ExplorePage } from "./explorer_page";
-
+import { generalActions } from "../store/general.js";
 
 
 const WatchPage = () => {
@@ -50,15 +50,14 @@ const FrontEnd = () => {
       <TopBar />
 
       <div style={{ display: "flex" }}>
-        <SideBarLeft />
-        <div style={{marginLeft:"50px"}}>
-          {page.type === "WATCH_PAGE" && <WatchPage />}
-          {/* {page.type === "SEARCH_EXPLORE_PAGE" && <SearchExplore />} */}
-          {page.type === "SEARCH_EXPLORE_PAGE" && <ExplorePage mode="search"/> }
-          {page.type === "HISTORY_PAGE" && <ExplorePage mode="history" />}
-          {page.type === "PLAYLISTS_PAGE" && <ExplorePage mode="playlists" />}
-          {page.type === "HOME_PAGE" && <HomePage />}
-          {page.type === "SETTINGS_PAGE" && <SettingsPage />}
+      {!general.orientationPortrait && <SideBarLeft />}
+        <div style={{marginLeft: !general.orientationPortrait ? "50px" : "0px"}}>
+          {general.page === "WATCH_PAGE" && <WatchPage />}
+          {general.page === "SEARCH_EXPLORE_PAGE" && <ExplorePage mode="search"/> }
+          {general.page === "HISTORY_PAGE" && <ExplorePage mode="history" />}
+          {general.page === "PLAYLISTS_PAGE" && <ExplorePage mode="playlists" />}
+          {general.page === "HOME_PAGE" && <HomePage />}
+          {general.page === "SETTINGS_PAGE" && <SettingsPage />}
         </div>
       </div>
 

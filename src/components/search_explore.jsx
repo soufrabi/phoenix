@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
-import { pageActions } from "../store/page.js"
+import { generalActions } from "../store/general"
 import { videoPlayerInfoActions } from "../store/video-player-info.js";
 
 const SearchItem = (props) => {
@@ -20,7 +20,7 @@ const SearchItem = (props) => {
       }
       ))
 
-      dispatch(pageActions.changePage("WATCH_PAGE"))
+      dispatch(generalActions.changePage("WATCH_PAGE"))
 
     } else if (props.data.type === "channel") {
       console.log("Its a channel")

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { videoPlayerInfoActions } from "../store/video-player-info";
-import { pageActions } from "../store/page";
+import { generalActions } from "../store/general";
 import { nanoid } from "nanoid";
 
 const HistoryItem = (props) => {
@@ -14,7 +14,7 @@ const HistoryItem = (props) => {
       }
       ))
 
-      dispatch(pageActions.changePage("WATCH_PAGE"))
+      dispatch(generalActions.changePage("WATCH_PAGE"))
 
     } else if (props.data.type === "channel") {
       console.log("Its a channel")

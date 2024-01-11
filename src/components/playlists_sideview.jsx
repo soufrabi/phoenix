@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { videoPlayerInfoActions } from "../store/video-player-info";
-import { pageActions } from "../store/page";
+import { generalActions } from "../store/page";
 import { playlistsActions } from "../store/playlists.js"
 import { nanoid } from "nanoid";
 
@@ -16,7 +16,7 @@ const PlaylistItem = (props) => {
     //   }
     //   ))
 
-    //   dispatch(pageActions.changePage("WATCH_PAGE"))
+    //   dispatch(generalActions.changePage("WATCH_PAGE"))
 
     // } else if (props.data.type === "channel") {
     //   console.log("Its a channel")

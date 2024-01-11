@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
-import { pageActions } from "../store/page.js"
+import { generalActions } from "../store/general"
 import { videoPlayerInfoActions } from "../store/video-player-info.js";
 
 const SearchItem = (props) => {
@@ -20,14 +20,14 @@ const SearchItem = (props) => {
       }
       ))
 
-      dispatch(pageActions.changePage("WATCH_PAGE"))
+      dispatch(generalActions.changePage("WATCH_PAGE"))
 
     } else if (props.data.type === "channel") {
       console.log("Its a channel")
     }
   }
-  
-  const handleContexMenu = (e)=> {
+
+  const handleContextMenu = (e)=> {
     // for right clicking on image
     e.preventDefault()
 
@@ -57,24 +57,24 @@ const SearchItem = (props) => {
 
   return (
     <>
-      <div 
+      <div
         onClick={handleImageClick}
-        style={{ 
+        style={{
           background:"#363040", color:"white" ,
           border: "2px solid black", borderRadius: "25px",
           // padding: "5px", margin:"10px",
           overflow:"hidden",
-          display:"flex", 
+          display:"flex",
           flexDirection:"column",
           justifyContent:"center",
           alignItems:"center",
           }}
       >
 
-        <img 
-          onContextMenu={handleContexMenu} 
-          width="100%" 
-          src={thumbnailUrl} 
+        <img
+          onContextMenu={handleContextMenu}
+          width="100%"
+          src={thumbnailUrl}
           alt=""
 
           style={{
@@ -99,11 +99,11 @@ const ExplorePage = (props) => {
 
   // const searchResults = useSelector((state) => state.watchSuggestions.videoList)
   const searchResults = useSelector((state) => state.searchResults.searchResults)
-  // will change this to searchResultsExplore 
+  // will change this to searchResultsExplore
 
   return (
     <>
-      <div className="explore-page" 
+      <div className="explore-page"
         // style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gridGap:"1em" , margin:"0.5em"}}
       >
         { props.mode === "search" &&
@@ -123,7 +123,7 @@ const ExplorePage = (props) => {
             return (
             //   <SearchItem key={nanoid()} data={item} />
                 <div key={nanoid()}>
-                    History  
+                    History
                 </div>
             )
           })

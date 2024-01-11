@@ -245,6 +245,15 @@ const VideoPlayer = () => {
   const volumeSliderRef = useRef(null)
   const timelineSliderRef = useRef(null)
 
+
+
+  function isTouchEnabled() {
+      return ( 'ontouchstart' in window ) ||
+             ( navigator.maxTouchPoints > 0 ) ||
+             ( navigator.msMaxTouchPoints > 0 );
+  }
+
+
   const togglePause = () => {
 
     if (videoRef.current.paused) {
@@ -403,6 +412,52 @@ const VideoPlayer = () => {
     dispatch(videoPlayerInfoActions.decreaseVideoQuality())
   }
 
+  const handleClickOnVideoElement = ()=>{
+      if (!isTouchEnabled()){
+        togglePause()
+      }
+  }
+
+  const handleDoubleClickOnVideoElement = ()=>{
+      // if(!isTouchEnabled()){
+      //   toggleFullScreenMode()
+      // }
+      toggleFullScreenMode()
+
+  }
+
+    const handleOnTouchStartForVideoContainer = (ev)=>{
+        console.log("Touch Start Event")
+        const rect = (document.querySelector(".video-container")).getBoundingClientRect()
+        const rectWidth = rect.right - rect.left
+        // const rectHeight = rect.bottom - rect.top
+        console.log("Rect Width  : ",rect.width)
+        console.log("Rect Height : ",rect.height)
+
+        const touches = ev.touches
+        for(let i = 0;i<touches.length;i++){
+            const touch = touches[i]
+            const x = touch.clientX
+            const y = touch.clientY
+
+            const relX = x-rect.left
+            const relY = y-rect.top
+
+            console.log(`Relative position of touch : ${relX} ${relY}`)
+
+            if(relX < rectWidth*0.25){
+                console.log("Moving Forward in Timeline")
+                changeTime(-5)
+            }else if(relX > rectWidth*(1.0-0.25)){
+                console.log("Moving Backward in Timeline")
+                changeTime(+5)
+            }else {
+                console.log("Toggle Pause")
+                togglePause()
+            }
+        }
+    }
+
   useEffect(() => {
 
     fetchData()
@@ -426,7 +481,10 @@ const VideoPlayer = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }} >
 
-      <div className="video-container " ref={videoContainerRef}>
+      <div className="video-container " ref={videoContainerRef}
+        onKeyDown={ handleKeyEventsForVolumeAndTimeline }
+       onTouchStart={ handleOnTouchStartForVideoContainer }
+      >
         <div className="video-controls-container">
           <div className="timeline-container" >
             {/* <div className="timeline"> */}
@@ -525,8 +583,8 @@ const VideoPlayer = () => {
 
           onTimeUpdate={handleTimeUpdate}
 
-          onClick={togglePause}
-          onDoubleClick={toggleFullScreenMode}
+          onClick={handleClickOnVideoElement}
+          onDoubleClick={handleDoubleClickOnVideoElement}
         // style={{
         //   width: {playerWidth},
         //   maxWidth: "90vw",

@@ -395,8 +395,16 @@ const VideoPlayer = () => {
             console.log("ArrowRight for TimeLineRight")
             changeTime(5)
             break;
+        case " ":
+            console.log("Space Key for Toggle Pause")
+            togglePause()
+            break;
+        case "f":
+            console.log("f key for Toggle Fullscreen")
+            toggleFullScreenMode()
+            break;
         default:
-            console.log('Not Handling KeyDownEvent for ',ev.key)
+            console.log('Not Handling KeyDownEvent for : ',ev.key)
 
       }
 

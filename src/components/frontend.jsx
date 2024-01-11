@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { TopBar } from "./top_bar";
 import { VideoPlayer } from "./video_player";
@@ -15,7 +16,8 @@ import "../styles/homepage_style.css"
 import "../styles/video_player.css"
 import "../styles/side_bar_left.css"
 import "../styles/settings_page.css"
-import { SideBarLeft } from "./side_bar_left";
+import "../styles/bottom_nav_bar.css"
+import { SideBarLeft , BottomNavBar} from "./nav_bars";
 import { SettingsPage } from "./settings_page";
 import { ExplorePage } from "./explorer_page";
 import { generalActions } from "../store/general.js";
@@ -42,10 +44,26 @@ const WatchPage = () => {
 
 const FrontEnd = () => {
 
-  const page = useSelector((state) => state.page)
-  console.log(page)
+  const dispatch = useDispatch()
+  const general = useSelector((state) => state.general)
+  const handleOrientationChange = (ev)=>{
+      console.log("Orientation Change")
+      const portrait = ev.matches
+      if(portrait){
+        dispatch(generalActions.updateOrientationPortrait(true))
+      }else {
+        dispatch(generalActions.updateOrientationPortrait(false))
+      }
+  }
+
+  useEffect(()=>{
+
+      window.matchMedia("(orientation: portrait)").addEventListener("change", handleOrientationChange)
+
+  },[])
 
   return (
+    <>
     <div style={{ marginTop: styles.topBar.height, paddingTop: "1em" }}>
       <TopBar />
 
@@ -62,6 +80,8 @@ const FrontEnd = () => {
       </div>
 
     </div>
+      {general.orientationPortrait && <BottomNavBar />}
+    </>
 
   )
 

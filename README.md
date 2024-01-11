@@ -25,7 +25,7 @@ An open source YouTube front-end using Invidious API
 ## Screenshots
 <div align="center" style=""> 
 
-  <img alt="screenshot1" style="max-width:40vw;" src="https://soufrabi.github.io/assets/phoenix/screenshots/screenshot1.png">
+  <img alt="screenshot1" style="max-width:40vw;" src="https://soufrabi.github.io/project-assets/phoenix/screenshot1.png">
 
 </div>
 

@@ -12,7 +12,7 @@ const TopBar = (props) => {
 
       <SearchBar />
       <div className="top-bar-right">
-        <a href="https://github.com/anirbandey1/phoenix" target="_blank">
+        <a href="https://github.com/soufrabi/phoenix" target="_blank">
           <i className="fa fa-github" id="github-icon"> </i>
         </a>
       </div>

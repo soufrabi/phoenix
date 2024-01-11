@@ -57,14 +57,14 @@ const SearchItem = (props) => {
 
   return (
     <>
-      <div 
+      <div
         onClick={handleImageClick}
-        style={{ 
+        style={{
           background:"#363040", color:"white" ,
           border: "2px solid black", borderRadius: "25px",
           // padding: "5px", margin:"10px",
           overflow:"hidden",
-          display:"flex", 
+          display:"flex",
           flexDirection:"column",
           justifyContent:"center",
           alignItems:"center",
@@ -99,11 +99,11 @@ const SearchExplore = (props) => {
 
   // const searchResults = useSelector((state) => state.watchSuggestions.videoList)
   const searchResults = useSelector((state) => state.searchResults.searchResults)
-  // will change this to searchResultsExplore 
+  // will change this to searchResultsExplore
 
   return (
     <>
-      <div id="search-explore" 
+      <div id="search-explore"
         // style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gridGap:"1em" , margin:"0.5em"}}
       >
         {

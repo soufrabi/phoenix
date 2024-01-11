@@ -428,7 +428,7 @@ const VideoPlayer = () => {
           ref={videoRef}
           src={videoPlayerInfo.videoUrl}
           poster={videoPlayerInfo.videoThumbnailUrl}
-          // width={videoPlayerInfo.preferences.playerWidth} 
+          // width={videoPlayerInfo.preferences.playerWidth}
           controls={videoPlayerInfo.preferences.playerControls}
           autoPlay={videoPlayerInfo.preferences.autoplay}
           muted={videoPlayerInfo.preferences.muted}

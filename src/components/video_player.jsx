@@ -123,14 +123,14 @@ const VideoPlayer = () => {
     // console.log("Value of videoUrl as obtained by the video player is " + invidious_video_url)
     // console.log("Value of videoThumbnailUrl as obtained by the video player is " + invidious_video_thumbnail_url)
 
-    
+
     dispatch(videoPlayerInfoActions.updateVideo({
       videoThumbnailUrl: videoInfo.videoThumbnailUrl,
       videoStreams:videoInfo.videoStreams,
       audioStreams:videoInfo.audioStreams,
     }
     ))
-    
+
 
     // if (invidious_video_thumbnail_url.length > 5) {
     // setVideoThumbnailUrl(invidious_video_thumbnail_url)

@@ -7,7 +7,7 @@ const videoPlayerInfoSlice = createSlice({
 
   name: 'videoPlayerInfo',
   initialState: {
-    videoId: "bUaHbs09sOo",
+    videoId: "G2_0Tn1dGmo",
     videoUrl: "",
     videoStreams : [],
     audioStreams : [],

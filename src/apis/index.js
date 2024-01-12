@@ -19,6 +19,10 @@ invidious_api.setInvidiousInstance = (provided_instance)=>{
   invidious_api.invidious_instance = provided_instance
 }
 
+invidious_api.getBaseUrl = ()=>{
+    return "https://"+invidious_api.getInvidiousInstance()
+}
+
 const invidious = axios.create({
   baseURL: "https://"+invidious_api.getInvidiousInstance()
 })
@@ -46,13 +50,19 @@ const invidious = axios.create({
 
 
 invidious_api.getSearchResults = async (search_term)=>{
-  const response = await invidious.get("https://"+invidious_api.getInvidiousInstance()+"/api/v1/search?q="+search_term,{})
+  const response = await invidious.get(invidious_api.getBaseUrl()+"/api/v1/search?q="+search_term,{})
 
   const data = response.data
   console.log("Search results as obtained by the API : ")
   console.log(data)
-  const result  = ""
   return data
+
+}
+
+invidious_api.getPlaylistInfo = async (playlist_id)=>{
+    const response = await invidious.get(invidious_api.getBaseUrl()+"/api/v1/playlists/"+playlist_id)
+    const data = response.data
+    return data
 
 }
 

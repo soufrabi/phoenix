@@ -3,8 +3,8 @@ import axios from "axios"
 const invidious_api = {}
 
 
-invidious_api.invidious_instances = ["yewtu.be","vid.puffyan.us","yt.artemislena.eu","invidious.projectsegfau.lt","y.com.sb","invidious.tiekoetter.com","invidious.slipfox.xyz","invidious.privacydev.net","vid.priv.au","iv.melmac.space","iv.ggtyler.dev","invidious.lunar.icu","invidious.0011.lt","inv.zzls.xyz","yt.floss.media","inv.tux.pizza","not-ytp.blocus.ch","invidious.protokolla.fi","onion.tube","inv.in.projectsegfau.lt","inv.citw.lgbt","inv.makerlab.tech","yt.oelrichsgarcia.de"]
-invidious_api.invidious_instance = invidious_api.invidious_instances[2]
+invidious_api.invidious_instances = ["yt.artemislena.eu","vid.puffian.us","invidious.projectsegfau.lt","y.com.sb","invidious.tiekoetter.com","invidious.slipfox.xyz","invidious.privacydev.net","vid.priv.au","iv.melmac.space","iv.ggtyler.dev","invidious.lunar.icu","invidious.0011.lt","inv.zzls.xyz","yt.floss.media","inv.tux.pizza","not-ytp.blocus.ch","invidious.protokolla.fi","onion.tube","inv.in.projectsegfau.lt","inv.citw.lgbt","inv.makerlab.tech","yt.oelrichsgarcia.de","yewtu.be"]
+invidious_api.invidious_instance = invidious_api.invidious_instances[0]
 
 invidious_api.getInvidiousInstances = ()=>{
   return invidious_api.invidious_instances

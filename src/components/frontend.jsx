@@ -74,6 +74,7 @@ const FrontEnd = () => {
           {general.page === "SEARCH_EXPLORE_PAGE" && <ExplorePage mode="search"/> }
           {general.page === "HISTORY_PAGE" && <ExplorePage mode="history" />}
           {general.page === "PLAYLISTS_PAGE" && <ExplorePage mode="playlists" />}
+          {general.page === "PLAYLIST_VIEW_PAGE" && <ExplorePage mode="playlist_view" />}
           {general.page === "HOME_PAGE" && <HomePage />}
           {general.page === "SETTINGS_PAGE" && <SettingsPage />}
         </div>

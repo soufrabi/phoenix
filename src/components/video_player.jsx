@@ -5,6 +5,9 @@ import { invidious_api } from "./../apis/index.js"
 import { videoPlayerInfoActions } from "../store/video-player-info.js";
 import { historyActions } from "../store/history.js"
 import { useSelector, useDispatch } from "react-redux";
+import { liesWithinBoundingRect } from "../utils/general.js"
+import autoPlaySvg  from "../assets/autoplay.svg"
+import loopSvg from "../assets/loop.svg"
 
 const VolumeIcons = (props) => {
 
@@ -539,11 +542,15 @@ const VideoPlayer = () => {
 
             <div className="right-buttons">
 
-              <button className="autoplay-btn" onClick={toggleAutoplay}>
-                A
+              <button className="autoplay-btn"
+                    onClick={(ev)=>{console.log("Autoplay button clicked"); toggleAutoplay() }}
+              >
+                <img src={autoPlaySvg} width="14px"/>
+
               </button>
-              <button className="loop-btn" onClick={toggleLoop}>
-                L
+              <button className="loop-btn"
+                    onClick={(ev)=>{console.log("Loop button clicked"); toggleLoop()} }>
+                <img src={loopSvg} width="20px" />
               </button>
 
               <button className="captions-btn">

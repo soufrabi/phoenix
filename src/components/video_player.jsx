@@ -107,6 +107,7 @@ const VideoPlayer = () => {
   const [currentTime, setCurrentTime] = useState("0:00")
   const [currentTimePretty, setCurrentTimePretty] = useState("0:00")
   const [durationPretty, setDurationPretty] = useState("0:00")
+  const touchEnabled = useSelector((state)=> state.general.touchEnabled)
 
   const debugMode = useSelector((state)=>state.debug.preferences.debugMode)
 
@@ -245,13 +246,6 @@ const VideoPlayer = () => {
   const volumeSliderRef = useRef(null)
   const timelineSliderRef = useRef(null)
 
-
-
-  function isTouchEnabled() {
-      return ( 'ontouchstart' in window ) ||
-             ( navigator.maxTouchPoints > 0 ) ||
-             ( navigator.msMaxTouchPoints > 0 );
-  }
 
 
   const togglePause = () => {
@@ -421,17 +415,15 @@ const VideoPlayer = () => {
   }
 
   const handleClickOnVideoElement = ()=>{
-      if (!isTouchEnabled()){
+      if (!touchEnabled){
         togglePause()
       }
   }
 
   const handleDoubleClickOnVideoElement = ()=>{
-      // if(!isTouchEnabled()){
-      //   toggleFullScreenMode()
-      // }
-      toggleFullScreenMode()
-
+      if(!touchEnabled){
+        toggleFullScreenMode()
+      }
   }
 
     const handleOnTouchStartForVideoContainer = (ev)=>{
@@ -565,10 +557,11 @@ const VideoPlayer = () => {
                 </svg>
               </button>
 
+            { !touchEnabled &&
               <button className="theater-btn" onClick={toggleTheatreMode}>
                 <TheatreIcons tall={true} />
-
               </button>
+            }
               <button className="full-screen-btn" onClick={toggleFullScreenMode}>
                 <FullscreenIcons fullscreen={true} />
 

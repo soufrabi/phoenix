@@ -21,6 +21,7 @@ import { SideBarLeft , BottomNavBar} from "./nav_bars";
 import { SettingsPage } from "./settings_page";
 import { ExplorePage } from "./explorer_page";
 import { generalActions } from "../store/general.js";
+import { invidious_api } from "../apis/index.js";
 
 
 const WatchPage = () => {
@@ -59,6 +60,7 @@ const FrontEnd = () => {
   useEffect(()=>{
 
       window.matchMedia("(orientation: portrait)").addEventListener("change", handleOrientationChange)
+      invidious_api.getLatestInstanceList()
 
   },[])
 

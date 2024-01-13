@@ -434,11 +434,9 @@ const VideoPlayer = () => {
 
     const handleOnTouchStartForVideoContainer = (ev)=>{
         console.log("Touch Start Event")
-        const rect = (document.querySelector(".video-container")).getBoundingClientRect()
-        const rectWidth = rect.right - rect.left
-        // const rectHeight = rect.bottom - rect.top
-        console.log("Rect Width  : ",rect.width)
-        console.log("Rect Height : ",rect.height)
+        const rectVideoContainer = (document.querySelector(".video-container")).getBoundingClientRect()
+        const rectVideoControlsContainer = (document.querySelector(".video-controls-container")).getBoundingClientRect()
+        const rectVideoContainerWidth = rectVideoContainer.right - rectVideoContainer.left
 
         const touches = ev.touches
         for(let i = 0;i<touches.length;i++){
@@ -446,20 +444,26 @@ const VideoPlayer = () => {
             const x = touch.clientX
             const y = touch.clientY
 
-            const relX = x-rect.left
-            const relY = y-rect.top
+            const relX = x-rectVideoContainer.left
+            const relY = y-rectVideoContainer.top
 
             console.log(`Relative position of touch : ${relX} ${relY}`)
 
-            if(relX < rectWidth*0.25){
-                console.log("Moving Forward in Timeline")
-                changeTime(-5)
-            }else if(relX > rectWidth*(1.0-0.25)){
-                console.log("Moving Backward in Timeline")
-                changeTime(+5)
+
+            if(!liesWithinBoundingRect(x,y,rectVideoControlsContainer)){
+                console.log("Touched inside Video Controls Container")
+                if(relX < rectVideoContainerWidth*0.25){
+                    console.log("Moving Forward in Timeline")
+                    changeTime(-5)
+                }else if(relX > rectVideoContainerWidth*(1.0-0.25)){
+                    console.log("Moving Backward in Timeline")
+                    changeTime(+5)
+                }else {
+                    console.log("Toggle Pause")
+                    togglePause()
+                }
             }else {
-                console.log("Toggle Pause")
-                togglePause()
+                console.log("Touched on Video Controls Container")
             }
         }
     }

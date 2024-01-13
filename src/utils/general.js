@@ -15,5 +15,16 @@ const getDeviceInfo = () => {
 }
 
 
-export { getDeviceInfo }
+const isTouchEnabled = () => {
+    return ('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0);
+}
+
+
+const isOrientationPortrait = ()=>{
+    return window.matchMedia("(orientation:portrait)").matches
+}
+
+export { getDeviceInfo,isTouchEnabled, isOrientationPortrait }
 

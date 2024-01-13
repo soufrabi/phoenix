@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { isTouchEnabled,isOrientationPortrait } from "../utils/general.js"
 
 
 const generalSlice = createSlice({
@@ -6,7 +7,8 @@ const generalSlice = createSlice({
   initialState : {
     page: "HOME_PAGE",
     // orientationPortrait: false
-    orientationPortrait: window.matchMedia("(orientation:portrait)").matches
+    orientationPortrait: isOrientationPortrait(),
+    touchEnabled: isTouchEnabled(),
   },
   reducers: {
     changePage(state,action){

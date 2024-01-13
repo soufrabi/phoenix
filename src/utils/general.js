@@ -26,5 +26,15 @@ const isOrientationPortrait = ()=>{
     return window.matchMedia("(orientation:portrait)").matches
 }
 
-export { getDeviceInfo,isTouchEnabled, isOrientationPortrait }
+
+const liesWithinBoundingRect = (x,y,rect)=>{
+    if(x>=rect.left && x<=rect.right && y>= rect.top && y<= rect.bottom){
+        return true;
+    }else {
+        return false;
+    }
+}
+
+
+export { getDeviceInfo,isTouchEnabled, isOrientationPortrait , liesWithinBoundingRect }
 

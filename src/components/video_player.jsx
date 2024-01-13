@@ -415,12 +415,15 @@ const VideoPlayer = () => {
   }
 
   const handleClickOnVideoElement = ()=>{
+      console.log("Click on Video Element")
+      console.log("touchEnabled : ",touchEnabled)
       if (!touchEnabled){
         togglePause()
       }
   }
 
   const handleDoubleClickOnVideoElement = ()=>{
+      console.log("Double Click on Video Element ")
       if(!touchEnabled){
         toggleFullScreenMode()
       }

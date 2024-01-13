@@ -579,7 +579,10 @@ const VideoPlayer = () => {
                 </button>
               </>
             }
-              <button className="full-screen-btn" onClick={toggleFullScreenMode}>
+              <button className="full-screen-btn"
+                onClick={toggleFullScreenMode}
+                style={{marginRight:"5px"}}
+              >
                 <FullscreenIcons fullscreen={true} />
 
               </button>

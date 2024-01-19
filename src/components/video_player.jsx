@@ -110,9 +110,17 @@ const VideoPlayer = () => {
   const [currentTime, setCurrentTime] = useState("0:00")
   const [currentTimePretty, setCurrentTimePretty] = useState("0:00")
   const [durationPretty, setDurationPretty] = useState("0:00")
+  const [videoControlsContainerDisplay,setVideoControlsContainerDisplay] = useState("block")
   const touchEnabled = useSelector((state)=> state.general.touchEnabled)
 
   const debugMode = useSelector((state)=>state.debug.preferences.debugMode)
+  const videoRef = useRef(null)
+  const videoContainerRef = useRef(null)
+  const volumeSliderRef = useRef(null)
+  const timelineSliderRef = useRef(null)
+  const videoControlsContainerRef = useRef(null)
+
+  var timeoutID = null
 
   const printVideoPlayerInfo = () => {
     console.log(videoPlayerInfo)
@@ -244,10 +252,6 @@ const VideoPlayer = () => {
 
   }
 
-  const videoRef = useRef(null)
-  const videoContainerRef = useRef(null)
-  const volumeSliderRef = useRef(null)
-  const timelineSliderRef = useRef(null)
 
 
 
@@ -468,6 +472,22 @@ const VideoPlayer = () => {
         }
     }
 
+  const resetVideoControlsDisappearTimeOut = ()=>{
+      console.log("Make video-controls visible.")
+      if(videoControlsContainerDisplay !== "block"){
+        setVideoControlsContainerDisplay("block")
+      }
+      timeoutID && clearTimeout(timeoutID)
+      timeoutID = setTimeout(()=>{
+          console.log("Make video-controls invisible")
+          if(videoControlsContainerDisplay !== "none"){
+            setVideoControlsContainerDisplay("none")
+          }
+
+      },10000)
+
+  }
+
   useEffect(() => {
 
     fetchData()
@@ -492,10 +512,17 @@ const VideoPlayer = () => {
     <div style={{ display: "flex", flexDirection: "column" }} >
 
       <div className="video-container " ref={videoContainerRef}
-        onKeyDown={ handleKeyEventsForVolumeAndTimeline }
-       onTouchStart={ handleOnTouchStartForVideoContainer }
+        onLoad={()=>{resetVideoControlsDisappearTimeOut()}}
+        onKeyDown={ (ev) =>{  handleKeyEventsForVolumeAndTimeline(ev) ;  resetVideoControlsDisappearTimeOut() } }
+        onTouchStart={ (ev) => { handleOnTouchStartForVideoContainer(ev) ; resetVideoControlsDisappearTimeOut() }}
+        onFocus={()=> {resetVideoControlsDisappearTimeOut() } }
+        onClick={()=>{resetVideoControlsDisappearTimeOut() }}
+        onMouseDown={()=>{resetVideoControlsDisappearTimeOut()}}
+        onMouseMove={()=>{resetVideoControlsDisappearTimeOut()}}
       >
-        <div className="video-controls-container">
+        <div className="video-controls-container"
+            style={{display: videoControlsContainerDisplay}}
+        >
           <div className="timeline-container" >
             {/* <div className="timeline"> */}
             {/*   <img className="preview-img" /> */}

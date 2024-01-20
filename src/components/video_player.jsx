@@ -376,6 +376,16 @@ const VideoPlayer = () => {
  }
 
   const handleKeyEventsForVolumeAndTimeline = (ev)=>{
+      const searchBarInput = document.querySelector("#search-bar-input")
+      let performAction = true
+      if( searchBarInput === document.activeElement ){
+        performAction = false
+      }
+
+      if(performAction === false){
+        return
+      }
+
 
       console.log(ev.key)
 

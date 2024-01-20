@@ -69,10 +69,15 @@
 }
 
 
+.video-controls {
+    display: flex;
+}
+
+
 .volume-container {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
-  --volume-slider-size: 100px;
+  --volume-slider-size: 60px;
 
 }
 
@@ -132,7 +137,7 @@ video {
 
 @media (min-width: 576px) and (max-width: 1000px) {
   .volume-container {
-    --volume-slider-size:100px;
+    --volume-slider-size:75px;
   }
 
 }
@@ -140,7 +145,7 @@ video {
 @media (min-width: 1000px) {
 
   .volume-container {
-    --volume-slider-size:150px;
+    --volume-slider-size:75px;
   }
 
   video {

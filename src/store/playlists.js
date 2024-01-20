@@ -14,7 +14,7 @@ const playlistsSlice = createSlice({
   ),
   reducers: {
 
-    deleteAllPlaylists(state, action) {
+    deleteAllPlaylists(state) {
 
       state.size = 0
       state.list = []
@@ -24,17 +24,16 @@ const playlistsSlice = createSlice({
 
     addPlaylist(state, action) {
       const newPlaylist = action.payload
-      const playlistId = newPlaylist.id
-      const playlistName = newPlaylist.name
-      const playlistType = newPlaylist.type
 
       if (true) {
         state.size++
 
         state.list.push({
-          name: playlistName,
-          type: playlistType,
-          id: playlistId
+          title: newPlaylist.title,
+          type: newPlaylist.type,
+          id: newPlaylist.id,
+          author: newPlaylist.author,
+          comments: newPlaylist.comments
         })
       }
 

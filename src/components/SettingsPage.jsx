@@ -63,11 +63,9 @@ const SettingsPage = () => {
         <>
             <div>
 
-                <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gridTemplateColumns: "1fr 1fr 1fr" }} >
-                    <button onClick={() => { }}>Settings Generic Button</button>
+                <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gridTemplateColumns: "1fr 1fr" }} >
                     <button onClick={() => { handleToggleDebugMode() }}>Toggle Debug Mode</button>
                     <button onClick={() => { handleDeleteAllLocalStorage() }}>Delete All Local Storage</button>
-
                 </div>
                 <div>
                     <InvidiousSelector />

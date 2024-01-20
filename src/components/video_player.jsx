@@ -329,11 +329,12 @@ const VideoPlayer = () => {
       let newVolume = currentVolume
 
       if(delta<0){
-              newVolume = currentVolume-volumeChangeDelta
-              if(newVolume<0){
-                  newVolume = 0
-              }
-              videoRef.current.volume = newVolume
+            newVolume = currentVolume-volumeChangeDelta
+            if(newVolume<0){
+                newVolume = 0
+            }
+            videoRef.current.volume = newVolume
+            volumeSliderRef.current.value = newVolume
             dispatch(videoPlayerInfoActions.updateVolume(newVolume.toString()))
       }else if(delta>0){
             newVolume = currentVolume+volumeChangeDelta
@@ -341,7 +342,7 @@ const VideoPlayer = () => {
                 newVolume = 1.0
             }
             videoRef.current.volume = newVolume
-
+            volumeSliderRef.current.value = newVolume
             dispatch(videoPlayerInfoActions.updateVolume(newVolume.toString()))
       }
 

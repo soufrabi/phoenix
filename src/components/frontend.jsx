@@ -18,8 +18,8 @@ import "../styles/side_bar_left.css"
 import "../styles/settings_page.css"
 import "../styles/bottom_nav_bar.css"
 import { SideBarLeft , BottomNavBar} from "./nav_bars";
-import { SettingsPage } from "./settings_page";
-import { ExplorePage } from "./explorer_page";
+import { SettingsPage } from "./SettingsPage.jsx";
+import { ExplorePage } from "./ExplorerPage.jsx";
 import { generalActions } from "../store/general.js";
 import { invidious_api } from "../apis/index.js";
 

@@ -110,7 +110,7 @@ const VideoPlayer = () => {
   const [currentTime, setCurrentTime] = useState("0:00")
   const [currentTimePretty, setCurrentTimePretty] = useState("0:00")
   const [durationPretty, setDurationPretty] = useState("0:00")
-  const [videoControlsContainerDisplay,setVideoControlsContainerDisplay] = useState("block")
+  const [videoControlsContainerVisible,setVideoControlsContainerVisible] = useState(true)
   const touchEnabled = useSelector((state)=> state.general.touchEnabled)
 
   const debugMode = useSelector((state)=>state.debug.preferences.debugMode)
@@ -454,7 +454,7 @@ const VideoPlayer = () => {
 
     const handleOnTouchStartForVideoContainer = (ev)=>{
         console.log("Touch Start Event")
-        if(videoControlsContainerDisplay !== "block"){
+        if(! videoControlsContainerVisible){
             pauseVideo()
             return
         }
@@ -494,11 +494,11 @@ const VideoPlayer = () => {
 
   const resetVideoControlsDisappearTimeOut = ()=>{
       console.log("Make video-controls visible.")
-      setVideoControlsContainerDisplay("block")
+      setVideoControlsContainerVisible(true)
       timeoutID && clearTimeout(timeoutID)
       timeoutID = setTimeout(()=>{
           console.log("Make video-controls invisible")
-          setVideoControlsContainerDisplay("none")
+          setVideoControlsContainerVisible(false)
 
       },5000)
 
@@ -551,7 +551,7 @@ const VideoPlayer = () => {
         onTouchStart={ (ev) => { handleOnTouchStartForVideoContainer(ev) }}
       >
         <div className="video-controls-container"
-            style={{display: videoControlsContainerDisplay}}
+            style={{display: videoControlsContainerVisible ? "block" : "none"}}
         >
           <div className="timeline-container" >
             {/* <div className="timeline"> */}

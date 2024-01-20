@@ -253,7 +253,12 @@ const VideoPlayer = () => {
   }
 
 
-
+  const pauseVideo = ()=>{
+    if (! videoRef.current.paused) {
+      videoRef.current.pause()
+      videoContainerRef.current.classList.add('paused')
+    }
+  }
 
   const togglePause = () => {
 
@@ -449,6 +454,10 @@ const VideoPlayer = () => {
 
     const handleOnTouchStartForVideoContainer = (ev)=>{
         console.log("Touch Start Event")
+        if(videoControlsContainerDisplay !== "block"){
+            pauseVideo()
+            return
+        }
         const rectVideoContainer = (document.querySelector(".video-container")).getBoundingClientRect()
         const rectVideoControlsContainer = (document.querySelector(".video-controls-container")).getBoundingClientRect()
         const rectVideoContainerWidth = rectVideoContainer.right - rectVideoContainer.left

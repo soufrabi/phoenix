@@ -7,6 +7,8 @@ import { videoPlayerInfoActions } from "../store/video-player-info.js";
 import { searchResultsActions } from "../store/search-results.js";
 import { invidious_api } from "../apis/index.js";
 
+import playlistIcon from "../assets/playlist-1.png"
+
 const explorerStyle = {
     item: {
         background: "#363040", color: "white",
@@ -133,7 +135,7 @@ const PlaylistViewItem = (props) => {
                     width="100%"
                     onContextMenu={(ev) => (ev.preventDefault())}
                     onClick={handleImageClick}
-                    src={props.video.title === "[Deleted video]" ? "" : props.video.videoThumbnails[0].url}
+                    src={props.video.videoThumbnails[0].url}
                     alt="thumbnail"
 
                     style={explorerStyle.img}
@@ -151,17 +153,50 @@ const PlaylistViewItem = (props) => {
     )
 }
 
+const PlaylistsViewItem = (props)=>{
+    const dispatch = useDispatch()
+    const handleImageClick = async ()=>{
+                console.log("Clicked on a playlist image")
+                console.log(props.data)
+                const playlistId = props.data.id
+                const playlistResult = await invidious_api.getPlaylistInfo(playlistId)
+                console.log("Playlist Result : ", playlistResult)
+                dispatch(searchResultsActions.updatePlaylist(playlistResult))
+                dispatch(generalActions.changePage("PLAYLIST_VIEW_PAGE"))
+
+    }
+    return (
+        <>
+            <div style={explorerStyle.item}>
+                <img
+                    width="100%"
+                    onContextMenu={(ev)=>{ev.preventDefault()}}
+                    onClick={handleImageClick}
+                    src={playlistIcon}
+                    alt="thumbnail"
+                    style={explorerStyle.img}
+                />
+                <p>
+                    {props.data.title} <br />
+                    {props.data.author} <br />
+                    {props.data.comments}
+                </p>
+            </div>
+        </>
+    )
+}
+
 const ExplorePage = (props) => {
 
     // const searchResults = useSelector((state) => state.watchSuggestions.videoList)
     const searchResults = useSelector((state) => state.searchResults.searchResults)
     const playlistResult = useSelector((state) => state.searchResults.playlistResult)
     // will change this to searchResultsExplore
+    const playlists = useSelector((state) => state.playlists.list)
 
     return (
         <>
             <div className="explore-page"
-            // style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gridGap:"1em" , margin:"0.5em"}}
             >
                 {props.mode === "search" &&
                     searchResults.map((item) => {
@@ -178,7 +213,6 @@ const ExplorePage = (props) => {
 
                         console.log(item)
                         return (
-                            //   <SearchItem key={nanoid()} data={item} />
                             <div key={nanoid()}>
                                 History
                             </div>
@@ -187,14 +221,12 @@ const ExplorePage = (props) => {
                 }
 
                 {props.mode === "playlists" &&
-                    searchResults.map((item) => {
+                    playlists.map((item) => {
 
                         console.log(item)
                         return (
-                            // <SearchItem key={nanoid()} data={item} />
                             <div key={nanoid()}>
-                                Playlists
-                                <PlaylistViewItem />
+                                <PlaylistsViewItem  data={item}/>
                             </div>
                         )
                     })
@@ -203,13 +235,16 @@ const ExplorePage = (props) => {
 
                 {props.mode === "playlist_view" &&
                     playlistResult.videos.filter((item) => {
-                        return item.title !== "[Deleted video]"
+                        if (item.title === "[Deleted video]" || item.title == "[Private video]"){
+                            return false
+                        }else {
+                            return true
+                        }
 
                     }).map((item) => {
 
                         console.log(item)
                         return (
-                            // <SearchItem key={nanoid()} data={item} />
                             <div key={nanoid()}>
                                 <PlaylistViewItem video={item} />
 

@@ -6,8 +6,10 @@ import {saveInLocalStorage, loadFromLocalStorage} from "./local_storage"
 const playlistsSlice = createSlice({
   name: 'playlists',
   initialState: loadFromLocalStorage("playlists",{
-    size:0,
-    list:[]
+    size:1,
+    list:[
+        {title:"Introduction to Qt/QML - all videos so far",type:"",author:"KDAB",id:"PL6CJYn40gN6hdNC1IGQZfVI707dh9DPRc",comments:""},
+    ]
   }
   ),
   reducers: {

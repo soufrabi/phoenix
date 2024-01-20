@@ -507,6 +507,8 @@ const VideoPlayer = () => {
     window.addEventListener("keypress",resetVideoControlsDisappearTimeOut)
     window.addEventListener("scroll",resetVideoControlsDisappearTimeOut)
 
+    window.addEventListener("keydown",handleKeyEventsForVolumeAndTimeline)
+
     // cleanup
     return ()=>{
         window.removeEventListener("click",resetVideoControlsDisappearTimeOut)
@@ -515,6 +517,7 @@ const VideoPlayer = () => {
         window.removeEventListener("keypress",resetVideoControlsDisappearTimeOut)
         window.removeEventListener("scroll",resetVideoControlsDisappearTimeOut)
 
+        window.removeEventListener("keydown",handleKeyEventsForVolumeAndTimeline)
     }
 
 
@@ -525,7 +528,6 @@ const VideoPlayer = () => {
     <div style={{ display: "flex", flexDirection: "column" }} >
 
       <div className="video-container " ref={videoContainerRef}
-        onKeyDown={ (ev) =>{  handleKeyEventsForVolumeAndTimeline(ev) } }
         onTouchStart={ (ev) => { handleOnTouchStartForVideoContainer(ev) }}
       >
         <div className="video-controls-container"

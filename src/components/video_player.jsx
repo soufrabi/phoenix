@@ -268,7 +268,7 @@ const VideoPlayer = () => {
 
   }
 
-  const volumeChanged = () => {
+  const volumeSliderChanged = () => {
     videoRef.current.volume = volumeSliderRef.current.value
     dispatch(videoPlayerInfoActions.updateVolume(volumeSliderRef.current.value))
 
@@ -574,7 +574,7 @@ const VideoPlayer = () => {
               </button>
               <input className="volume-slider" ref={volumeSliderRef}
                 type="range" min="0" max="1" step="any"
-                onChange={volumeChanged}
+                onChange={volumeSliderChanged}
                 onKeyDown={(ev)=>{ev.preventDefault()}}
               // onWheel={(e) => { e.preventDefault() }}
               // onWheelCapture={(e) => { e.preventDefault() }}
